@@ -63,30 +63,32 @@ namespace Eco.ADO
             }
             return obj;
         }
-        public void Add(int companydo_id,string name,string region,string administrativeArea)
+        public int Add(int companydo_id,string name,string region,string administrativeArea)
         {
             try
             {
                 if (companydo_id != 0)
                 {
                     connection.Open();
-                    string query = "INSERT INTO ProductionSite(CompanyDO_id,Name,Region,AdministrativeArea)VALUES(@companydo_id,@name,@region,@administrativeArea)";
+                    string query = "INSERT INTO ProductionSite(CompanyDO_id,Name,Region,AdministrativeArea)VALUES(@companydo_id,@name,@region,@administrativeArea); SELECT SCOPE_IDENTITY()";
                     SqlCommand cmd = new SqlCommand(query, connection);
                     cmd.Parameters.AddWithValue("@companydo_id", companydo_id);
                     cmd.Parameters.AddWithValue("@name", name);
                     cmd.Parameters.AddWithValue("@region", region);
                     cmd.Parameters.AddWithValue("@administrativeArea", administrativeArea);
-                    cmd.ExecuteNonQuery();
+                    int x = Convert.ToInt32(cmd.ExecuteScalar());
                     connection.Close();
-
-                    MessageBox.Show("Площадка добавлена");
+                    return x;
                 }
                 else
-                     MessageBox.Show("Не указана дочерняя компания"); 
+                    
+                     MessageBox.Show("Не указана дочерняя компания");
+                return 0;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ошибка при добавлении");
+                return 0;
             }
         }
         public void Edit(int id, string name, string region , string administrativeArea)
@@ -102,14 +104,13 @@ namespace Eco.ADO
                 cmd.Parameters.AddWithValue("@administrativeArea", administrativeArea);
                 cmd.ExecuteNonQuery();
                 connection.Close();
-                MessageBox.Show("Данные площадки изменены");
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ошибка при изменении");
             }
         }
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             try
             {
@@ -119,11 +120,12 @@ namespace Eco.ADO
                 cmd.Parameters.AddWithValue("@id", id);
                 cmd.ExecuteNonQuery();
                 connection.Close();
-                MessageBox.Show("Площадка удалена");
+                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ошибка при удалении");
+                return false;
             }
         }
 

@@ -86,6 +86,30 @@ namespace Eco.ADO
             }
             return obj;
         }
+        public CategoryOfFuel getObject(int id)
+        {
+            CategoryOfFuel obj = new CategoryOfFuel();
+            try
+            {
+                connection.Open();
+                string query = "Select * from CategoryOfFuel where id=@id";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@id",id);
+                SqlDataReader dr = cmd.ExecuteReader();
+                dr.Read();
+                obj.id = (int)dr["id"];
+                obj.CategoryName = (string)dr["CategoryName"];
+                obj.FuelTableName = (string)dr["FuelTableName"];
+                dr.Close();
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка при получение объекта");
+                return null;
+            }
+            return obj;
+        }
         public List<Fuel> getFuels(string table)
         {
             List<Fuel> result = new List<Fuel>();

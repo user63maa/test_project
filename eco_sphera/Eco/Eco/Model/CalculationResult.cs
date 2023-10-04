@@ -12,7 +12,8 @@ namespace Eco.Model
         public int id { get; set; }
         public int SourceOfEmission_id { get; set; }
         public double ResultSum { get; set; }
-        public DateTime SaveData { get; set; }
+        public string SaveData { get; set; }
+        public string ShortDate { get; set; }
         public string PersonnelLogin { get; set; }
 
     }

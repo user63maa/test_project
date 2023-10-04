@@ -101,6 +101,7 @@ namespace Eco.Forms.NewSourceForms
             this.Controls.Add(this.label1);
             this.Name = "FormNewSource";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Источник";
             this.Load += new System.EventHandler(this.FormNewSource_Load);
             this.ResumeLayout(false);

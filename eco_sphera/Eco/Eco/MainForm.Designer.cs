@@ -42,14 +42,13 @@ namespace Eco
             this.tsmAddProsuctionSide = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmEditCompany = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmDeleteCompany = new System.Windows.Forms.ToolStripMenuItem();
-            this.btRefresh = new System.Windows.Forms.Button();
             this.cmsForSourceOFEmission = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addSourceFuelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editSourceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.delSourceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.co2densitylbl1 = new System.Windows.Forms.TabPage();
-            this.btToExcel = new System.Windows.Forms.Button();
+            this.lblErrorGas = new System.Windows.Forms.Label();
             this.emissionsResult1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -96,6 +95,9 @@ namespace Eco
             this.oxygenlabel = new System.Windows.Forms.Label();
             this.carbondioxidelabel = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lblErrorFluid = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tbCoefEmisson = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.fluidUsageTJTB = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -109,6 +111,19 @@ namespace Eco
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.lblErrorFlare = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.label46 = new System.Windows.Forms.Label();
+            this.label45 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tbKoefVibrosCO2 = new System.Windows.Forms.TextBox();
+            this.tbKoefVibrosCH4 = new System.Windows.Forms.TextBox();
+            this.tbVibrosCO2 = new System.Windows.Forms.TextBox();
+            this.tbVibrosCH4 = new System.Windows.Forms.TextBox();
+            this.tbKoefNedoj = new System.Windows.Forms.TextBox();
+            this.tbDensityMetan = new System.Windows.Forms.TextBox();
             this.combustionFlareCB = new System.Windows.Forms.ComboBox();
             this.label43 = new System.Windows.Forms.Label();
             this.emissionsResult3 = new System.Windows.Forms.Label();
@@ -152,21 +167,29 @@ namespace Eco
             this.label40 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.lblErrorFigusive = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.tbValueCO2Default = new System.Windows.Forms.TextBox();
+            this.tbValueCH4Default = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.tbFigusiveCO2 = new System.Windows.Forms.TextBox();
+            this.tbCO2Density = new System.Windows.Forms.TextBox();
             this.emissionsResult4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.FugitiveCO2DensityTB = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.tbFigusiveCH4 = new System.Windows.Forms.TextBox();
             this.calculateFugitiveBTN = new System.Windows.Forms.Button();
             this.cbSaveFugitive = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.ObjemDolaCO2 = new System.Windows.Forms.Label();
             this.CO2ShareTB = new System.Windows.Forms.TextBox();
             this.lblObjemDolaCH4 = new System.Windows.Forms.Label();
             this.CH4ShareTB = new System.Windows.Forms.TextBox();
             this.lblRasxodGaza = new System.Windows.Forms.Label();
             this.gasUsageFugitiveTB = new System.Windows.Forms.TextBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.lblTextErrortranstort = new System.Windows.Forms.Label();
             this.emissionsResult5 = new System.Windows.Forms.Label();
             this.tbKoefVibrosov = new System.Windows.Forms.TextBox();
             this.lblKoefVibrosov = new System.Windows.Forms.Label();
@@ -183,6 +206,10 @@ namespace Eco
             this.lblRasxodTopliva = new System.Windows.Forms.Label();
             this.tUsageTransportTB = new System.Windows.Forms.TextBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.lblErrorKosVibros = new System.Windows.Forms.Label();
+            this.tbVibrosTeplo = new System.Windows.Forms.TextBox();
+            this.tbVibrosElectro = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.emissionsResult6 = new System.Windows.Forms.Label();
             this.lblZnaxZakyp = new System.Windows.Forms.Label();
             this.lblTeplovEnergy = new System.Windows.Forms.Label();
@@ -194,8 +221,16 @@ namespace Eco
             this.lblZakypki = new System.Windows.Forms.Label();
             this.electroUsageTB = new System.Windows.Forms.TextBox();
             this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
+            this.indirectEmissionsCb = new System.Windows.Forms.CheckBox();
+            this.primaryEmissionsCb = new System.Windows.Forms.CheckBox();
             this.statsDatagrid = new System.Windows.Forms.DataGridView();
+            this.btToExcel = new System.Windows.Forms.Button();
+            this.lblFullPath = new System.Windows.Forms.Label();
+            this.cmsForSourceFuel = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblSelectedNodeId = new System.Windows.Forms.Label();
+            this.lblLastSave = new System.Windows.Forms.Label();
+            this.lblWhoLastSave = new System.Windows.Forms.Label();
             this.cmsForProductiondSide.SuspendLayout();
             this.cmsForCompanyDO.SuspendLayout();
             this.cmsForSourceOFEmission.SuspendLayout();
@@ -210,10 +245,13 @@ namespace Eco
             this.tabPage6.SuspendLayout();
             this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statsDatagrid)).BeginInit();
+            this.cmsForSourceFuel.SuspendLayout();
             this.SuspendLayout();
             // 
             // treeView1
             // 
+            this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.treeView1.Location = new System.Drawing.Point(12, 43);
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(323, 511);
@@ -262,8 +300,7 @@ namespace Eco
             this.buttonAddCompanyDO.TabIndex = 1;
             this.buttonAddCompanyDO.UseMnemonic = false;
             this.buttonAddCompanyDO.UseVisualStyleBackColor = true;
-            this.buttonAddCompanyDO.Click += new System.EventHandler(this.buttonAddCompanyDO_MouseClick);
-            this.buttonAddCompanyDO.MouseClick += new System.Windows.Forms.MouseEventHandler(this.buttonAddCompanyDO_MouseClick);
+            this.buttonAddCompanyDO.Click += new System.EventHandler(this.buttonAddCompanyDO_Click);
             // 
             // imageList1
             // 
@@ -304,18 +341,6 @@ namespace Eco
             this.tsmDeleteCompany.Text = "Удалить компанию";
             this.tsmDeleteCompany.Click += new System.EventHandler(this.tsmDeleteCompany_Click);
             // 
-            // btRefresh
-            // 
-            this.btRefresh.ImageKey = "refresh32.png";
-            this.btRefresh.ImageList = this.imageList1;
-            this.btRefresh.Location = new System.Drawing.Point(50, 4);
-            this.btRefresh.Name = "btRefresh";
-            this.btRefresh.Size = new System.Drawing.Size(38, 33);
-            this.btRefresh.TabIndex = 2;
-            this.btRefresh.UseMnemonic = false;
-            this.btRefresh.UseVisualStyleBackColor = true;
-            this.btRefresh.Click += new System.EventHandler(this.btRefresh_Click);
-            // 
             // cmsForSourceOFEmission
             // 
             this.cmsForSourceOFEmission.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -348,6 +373,9 @@ namespace Eco
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.co2densitylbl1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
@@ -360,10 +388,11 @@ namespace Eco
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(726, 511);
             this.tabControl1.TabIndex = 3;
+            this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             // 
             // co2densitylbl1
             // 
-            this.co2densitylbl1.Controls.Add(this.btToExcel);
+            this.co2densitylbl1.Controls.Add(this.lblErrorGas);
             this.co2densitylbl1.Controls.Add(this.emissionsResult1);
             this.co2densitylbl1.Controls.Add(this.button1);
             this.co2densitylbl1.Controls.Add(this.checkBox1);
@@ -383,22 +412,24 @@ namespace Eco
             this.co2densitylbl1.UseVisualStyleBackColor = true;
             this.co2densitylbl1.Click += new System.EventHandler(this.co2densitylbl1_Click);
             // 
-            // btToExcel
+            // lblErrorGas
             // 
-            this.btToExcel.ImageIndex = 2;
-            this.btToExcel.ImageList = this.imageList1;
-            this.btToExcel.Location = new System.Drawing.Point(666, 7);
-            this.btToExcel.Name = "btToExcel";
-            this.btToExcel.Size = new System.Drawing.Size(31, 34);
-            this.btToExcel.TabIndex = 12;
-            this.btToExcel.UseVisualStyleBackColor = true;
-            this.btToExcel.Click += new System.EventHandler(this.btToExcel_Click);
+            this.lblErrorGas.AutoSize = true;
+            this.lblErrorGas.BackColor = System.Drawing.Color.Transparent;
+            this.lblErrorGas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.lblErrorGas.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorGas.Location = new System.Drawing.Point(21, 140);
+            this.lblErrorGas.Name = "lblErrorGas";
+            this.lblErrorGas.Size = new System.Drawing.Size(193, 18);
+            this.lblErrorGas.TabIndex = 45;
+            this.lblErrorGas.Text = "Неверный формат данных";
+            this.lblErrorGas.Visible = false;
             // 
             // emissionsResult1
             // 
             this.emissionsResult1.AutoSize = true;
             this.emissionsResult1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.emissionsResult1.Location = new System.Drawing.Point(559, 436);
+            this.emissionsResult1.Location = new System.Drawing.Point(512, 436);
             this.emissionsResult1.Name = "emissionsResult1";
             this.emissionsResult1.Size = new System.Drawing.Size(19, 20);
             this.emissionsResult1.TabIndex = 11;
@@ -407,7 +438,7 @@ namespace Eco
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(20, 423);
+            this.button1.Location = new System.Drawing.Point(24, 410);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(278, 46);
             this.button1.TabIndex = 10;
@@ -418,11 +449,11 @@ namespace Eco
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(20, 400);
+            this.checkBox1.Location = new System.Drawing.Point(24, 387);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(157, 17);
+            this.checkBox1.Size = new System.Drawing.Size(183, 17);
             this.checkBox1.TabIndex = 9;
-            this.checkBox1.Text = "Сохранить рассчет в базу";
+            this.checkBox1.Text = "с сохранением расчёта в базу ";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // label3
@@ -430,11 +461,11 @@ namespace Eco
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(352, 436);
+            this.label3.Location = new System.Drawing.Point(315, 436);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(201, 20);
+            this.label3.Size = new System.Drawing.Size(191, 20);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Выбросы CO2 (т СО2): ";
+            this.label3.Text = "Выбросы CO2 (тонн): ";
             // 
             // label1
             // 
@@ -468,6 +499,8 @@ namespace Eco
             this.gasesUsageTB.Name = "gasesUsageTB";
             this.gasesUsageTB.Size = new System.Drawing.Size(100, 20);
             this.gasesUsageTB.TabIndex = 2;
+            this.gasesUsageTB.TextChanged += new System.EventHandler(this.gasesUsageTB_TextChanged);
+            this.gasesUsageTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gasesUsageTB_KeyPress);
             // 
             // gasesEditCB
             // 
@@ -835,6 +868,9 @@ namespace Eco
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.lblErrorFluid);
+            this.tabPage2.Controls.Add(this.label2);
+            this.tabPage2.Controls.Add(this.tbCoefEmisson);
             this.tabPage2.Controls.Add(this.label24);
             this.tabPage2.Controls.Add(this.fluidUsageTJTB);
             this.tabPage2.Controls.Add(this.label13);
@@ -854,6 +890,37 @@ namespace Eco
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Сжигание жидкого топлива";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // lblErrorFluid
+            // 
+            this.lblErrorFluid.AutoSize = true;
+            this.lblErrorFluid.BackColor = System.Drawing.Color.Transparent;
+            this.lblErrorFluid.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.lblErrorFluid.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorFluid.Location = new System.Drawing.Point(23, 178);
+            this.lblErrorFluid.Name = "lblErrorFluid";
+            this.lblErrorFluid.Size = new System.Drawing.Size(193, 18);
+            this.lblErrorFluid.TabIndex = 44;
+            this.lblErrorFluid.Text = "Неверный формат данных";
+            this.lblErrorFluid.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoEllipsis = true;
+            this.label2.Location = new System.Drawing.Point(23, 124);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(166, 28);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "Коэффициент выбросов          (т СО2/ т Дж)";
+            // 
+            // tbCoefEmisson
+            // 
+            this.tbCoefEmisson.Enabled = false;
+            this.tbCoefEmisson.Location = new System.Drawing.Point(203, 132);
+            this.tbCoefEmisson.Name = "tbCoefEmisson";
+            this.tbCoefEmisson.ReadOnly = true;
+            this.tbCoefEmisson.Size = new System.Drawing.Size(100, 20);
+            this.tbCoefEmisson.TabIndex = 20;
             // 
             // label24
             // 
@@ -908,9 +975,9 @@ namespace Eco
             this.checkBox2.AutoSize = true;
             this.checkBox2.Location = new System.Drawing.Point(20, 400);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(157, 17);
+            this.checkBox2.Size = new System.Drawing.Size(183, 17);
             this.checkBox2.TabIndex = 13;
-            this.checkBox2.Text = "Сохранить рассчет в базу";
+            this.checkBox2.Text = "с сохранением расчёта в базу ";
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // label12
@@ -920,9 +987,9 @@ namespace Eco
             this.label12.ForeColor = System.Drawing.Color.Red;
             this.label12.Location = new System.Drawing.Point(352, 436);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(201, 20);
+            this.label12.Size = new System.Drawing.Size(191, 20);
             this.label12.TabIndex = 12;
-            this.label12.Text = "Выбросы CO2 (т СО2): ";
+            this.label12.Text = "Выбросы CO2 (тонн): ";
             // 
             // dictLowerHeatTB
             // 
@@ -969,6 +1036,19 @@ namespace Eco
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.lblErrorFlare);
+            this.tabPage3.Controls.Add(this.label47);
+            this.tabPage3.Controls.Add(this.label46);
+            this.tabPage3.Controls.Add(this.label45);
+            this.tabPage3.Controls.Add(this.label8);
+            this.tabPage3.Controls.Add(this.label6);
+            this.tabPage3.Controls.Add(this.label5);
+            this.tabPage3.Controls.Add(this.tbKoefVibrosCO2);
+            this.tabPage3.Controls.Add(this.tbKoefVibrosCH4);
+            this.tabPage3.Controls.Add(this.tbVibrosCO2);
+            this.tabPage3.Controls.Add(this.tbVibrosCH4);
+            this.tabPage3.Controls.Add(this.tbKoefNedoj);
+            this.tabPage3.Controls.Add(this.tbDensityMetan);
             this.tabPage3.Controls.Add(this.combustionFlareCB);
             this.tabPage3.Controls.Add(this.label43);
             this.tabPage3.Controls.Add(this.emissionsResult3);
@@ -988,6 +1068,121 @@ namespace Eco
             this.tabPage3.Text = "Факельное горение";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // lblErrorFlare
+            // 
+            this.lblErrorFlare.AutoSize = true;
+            this.lblErrorFlare.BackColor = System.Drawing.Color.Transparent;
+            this.lblErrorFlare.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.lblErrorFlare.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorFlare.Location = new System.Drawing.Point(17, 368);
+            this.lblErrorFlare.Name = "lblErrorFlare";
+            this.lblErrorFlare.Size = new System.Drawing.Size(193, 18);
+            this.lblErrorFlare.TabIndex = 43;
+            this.lblErrorFlare.Text = "Неверный формат данных";
+            this.lblErrorFlare.Visible = false;
+            // 
+            // label47
+            // 
+            this.label47.AutoEllipsis = true;
+            this.label47.Location = new System.Drawing.Point(14, 329);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(140, 26);
+            this.label47.TabIndex = 37;
+            this.label47.Text = "Коэф. недожога углеводородной смеси";
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(14, 293);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(84, 13);
+            this.label46.TabIndex = 36;
+            this.label46.Text = "Выбросы CH4 :";
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(14, 264);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(120, 13);
+            this.label45.TabIndex = 35;
+            this.label45.Text = "Коэф. выбросов СH4 :";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(14, 223);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(130, 13);
+            this.label8.TabIndex = 34;
+            this.label8.Text = "Плотность CH4 (кг/м3) :";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(13, 188);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(84, 13);
+            this.label6.TabIndex = 33;
+            this.label6.Text = "Выбросы CO2 :";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(13, 155);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(120, 13);
+            this.label5.TabIndex = 32;
+            this.label5.Text = "Коэф. выбросов CO2 :";
+            // 
+            // tbKoefVibrosCO2
+            // 
+            this.tbKoefVibrosCO2.Location = new System.Drawing.Point(174, 152);
+            this.tbKoefVibrosCO2.Name = "tbKoefVibrosCO2";
+            this.tbKoefVibrosCO2.ReadOnly = true;
+            this.tbKoefVibrosCO2.Size = new System.Drawing.Size(100, 20);
+            this.tbKoefVibrosCO2.TabIndex = 31;
+            // 
+            // tbKoefVibrosCH4
+            // 
+            this.tbKoefVibrosCH4.Location = new System.Drawing.Point(174, 257);
+            this.tbKoefVibrosCH4.Name = "tbKoefVibrosCH4";
+            this.tbKoefVibrosCH4.ReadOnly = true;
+            this.tbKoefVibrosCH4.Size = new System.Drawing.Size(100, 20);
+            this.tbKoefVibrosCH4.TabIndex = 30;
+            // 
+            // tbVibrosCO2
+            // 
+            this.tbVibrosCO2.Location = new System.Drawing.Point(174, 185);
+            this.tbVibrosCO2.Name = "tbVibrosCO2";
+            this.tbVibrosCO2.ReadOnly = true;
+            this.tbVibrosCO2.Size = new System.Drawing.Size(100, 20);
+            this.tbVibrosCO2.TabIndex = 29;
+            // 
+            // tbVibrosCH4
+            // 
+            this.tbVibrosCH4.Location = new System.Drawing.Point(174, 290);
+            this.tbVibrosCH4.Name = "tbVibrosCH4";
+            this.tbVibrosCH4.ReadOnly = true;
+            this.tbVibrosCH4.Size = new System.Drawing.Size(100, 20);
+            this.tbVibrosCH4.TabIndex = 28;
+            // 
+            // tbKoefNedoj
+            // 
+            this.tbKoefNedoj.Location = new System.Drawing.Point(174, 329);
+            this.tbKoefNedoj.Name = "tbKoefNedoj";
+            this.tbKoefNedoj.ReadOnly = true;
+            this.tbKoefNedoj.Size = new System.Drawing.Size(100, 20);
+            this.tbKoefNedoj.TabIndex = 27;
+            // 
+            // tbDensityMetan
+            // 
+            this.tbDensityMetan.Location = new System.Drawing.Point(174, 220);
+            this.tbDensityMetan.Name = "tbDensityMetan";
+            this.tbDensityMetan.ReadOnly = true;
+            this.tbDensityMetan.Size = new System.Drawing.Size(100, 20);
+            this.tbDensityMetan.TabIndex = 26;
+            // 
             // combustionFlareCB
             // 
             this.combustionFlareCB.FormattingEnabled = true;
@@ -998,7 +1193,7 @@ namespace Eco
             "Нефтяные, газоконденсатные и газовые месторождения",
             "Нефтеперерабатывающие, нефтехимические, химические, металлургические и прочие пре" +
                 "дприятия"});
-            this.combustionFlareCB.Location = new System.Drawing.Point(16, 125);
+            this.combustionFlareCB.Location = new System.Drawing.Point(16, 29);
             this.combustionFlareCB.Name = "combustionFlareCB";
             this.combustionFlareCB.Size = new System.Drawing.Size(258, 21);
             this.combustionFlareCB.TabIndex = 25;
@@ -1006,7 +1201,7 @@ namespace Eco
             // label43
             // 
             this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(13, 104);
+            this.label43.Location = new System.Drawing.Point(14, 8);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(78, 13);
             this.label43.TabIndex = 24;
@@ -1016,7 +1211,7 @@ namespace Eco
             // 
             this.emissionsResult3.AutoSize = true;
             this.emissionsResult3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.emissionsResult3.Location = new System.Drawing.Point(472, 436);
+            this.emissionsResult3.Location = new System.Drawing.Point(529, 436);
             this.emissionsResult3.Name = "emissionsResult3";
             this.emissionsResult3.Size = new System.Drawing.Size(19, 20);
             this.emissionsResult3.TabIndex = 23;
@@ -1036,11 +1231,12 @@ namespace Eco
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
+            this.checkBox3.CausesValidation = false;
             this.checkBox3.Location = new System.Drawing.Point(20, 400);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(157, 17);
+            this.checkBox3.Size = new System.Drawing.Size(183, 17);
             this.checkBox3.TabIndex = 21;
-            this.checkBox3.Text = "Сохранить рассчет в базу";
+            this.checkBox3.Text = "с сохранением расчёта в базу ";
             this.checkBox3.UseVisualStyleBackColor = true;
             // 
             // label16
@@ -1050,14 +1246,14 @@ namespace Eco
             this.label16.ForeColor = System.Drawing.Color.Red;
             this.label16.Location = new System.Drawing.Point(332, 436);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(134, 20);
+            this.label16.Size = new System.Drawing.Size(191, 20);
             this.label16.TabIndex = 20;
-            this.label16.Text = "Выбросы CO2: ";
+            this.label16.Text = "Выбросы CO2 (тонн): ";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(12, 60);
+            this.label18.Location = new System.Drawing.Point(13, 119);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(130, 13);
             this.label18.TabIndex = 17;
@@ -1065,7 +1261,7 @@ namespace Eco
             // 
             // FlareCO2DensityTB
             // 
-            this.FlareCO2DensityTB.Location = new System.Drawing.Point(173, 57);
+            this.FlareCO2DensityTB.Location = new System.Drawing.Point(174, 116);
             this.FlareCO2DensityTB.Name = "FlareCO2DensityTB";
             this.FlareCO2DensityTB.ReadOnly = true;
             this.FlareCO2DensityTB.Size = new System.Drawing.Size(100, 20);
@@ -1074,7 +1270,7 @@ namespace Eco
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(12, 22);
+            this.label19.Location = new System.Drawing.Point(13, 81);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(141, 13);
             this.label19.TabIndex = 15;
@@ -1082,10 +1278,11 @@ namespace Eco
             // 
             // fuelUsageFlareTB
             // 
-            this.fuelUsageFlareTB.Location = new System.Drawing.Point(173, 19);
+            this.fuelUsageFlareTB.Location = new System.Drawing.Point(174, 78);
             this.fuelUsageFlareTB.Name = "fuelUsageFlareTB";
             this.fuelUsageFlareTB.Size = new System.Drawing.Size(100, 20);
             this.fuelUsageFlareTB.TabIndex = 14;
+            this.fuelUsageFlareTB.TextChanged += new System.EventHandler(this.fuelUsageFlareTB_TextChanged);
             // 
             // flareGasesEditCB
             // 
@@ -1306,6 +1503,7 @@ namespace Eco
             this.flareTB1.Name = "flareTB1";
             this.flareTB1.Size = new System.Drawing.Size(100, 20);
             this.flareTB1.TabIndex = 10;
+            this.flareTB1.TextChanged += new System.EventHandler(this.flareTB1_TextChanged);
             // 
             // flareTB9
             // 
@@ -1395,15 +1593,22 @@ namespace Eco
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.lblErrorFigusive);
+            this.tabPage4.Controls.Add(this.label44);
+            this.tabPage4.Controls.Add(this.tbValueCO2Default);
+            this.tabPage4.Controls.Add(this.tbValueCH4Default);
+            this.tabPage4.Controls.Add(this.label37);
+            this.tabPage4.Controls.Add(this.label17);
+            this.tabPage4.Controls.Add(this.label15);
+            this.tabPage4.Controls.Add(this.label14);
+            this.tabPage4.Controls.Add(this.tbFigusiveCO2);
+            this.tabPage4.Controls.Add(this.tbCO2Density);
             this.tabPage4.Controls.Add(this.emissionsResult4);
-            this.tabPage4.Controls.Add(this.label5);
             this.tabPage4.Controls.Add(this.FugitiveCO2DensityTB);
-            this.tabPage4.Controls.Add(this.label6);
-            this.tabPage4.Controls.Add(this.textBox5);
+            this.tabPage4.Controls.Add(this.tbFigusiveCH4);
             this.tabPage4.Controls.Add(this.calculateFugitiveBTN);
             this.tabPage4.Controls.Add(this.cbSaveFugitive);
             this.tabPage4.Controls.Add(this.label4);
-            this.tabPage4.Controls.Add(this.ObjemDolaCO2);
             this.tabPage4.Controls.Add(this.CO2ShareTB);
             this.tabPage4.Controls.Add(this.lblObjemDolaCH4);
             this.tabPage4.Controls.Add(this.CH4ShareTB);
@@ -1416,49 +1621,124 @@ namespace Eco
             this.tabPage4.Text = "Фугитивные выбросы";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // lblErrorFigusive
+            // 
+            this.lblErrorFigusive.AutoSize = true;
+            this.lblErrorFigusive.BackColor = System.Drawing.Color.Transparent;
+            this.lblErrorFigusive.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.lblErrorFigusive.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorFigusive.Location = new System.Drawing.Point(17, 158);
+            this.lblErrorFigusive.Name = "lblErrorFigusive";
+            this.lblErrorFigusive.Size = new System.Drawing.Size(193, 18);
+            this.lblErrorFigusive.TabIndex = 42;
+            this.lblErrorFigusive.Text = "Неверный формат данных";
+            this.lblErrorFigusive.Visible = false;
+            // 
+            // label44
+            // 
+            this.label44.AutoEllipsis = true;
+            this.label44.Location = new System.Drawing.Point(318, 6);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(129, 42);
+            this.label44.TabIndex = 41;
+            this.label44.Text = "Плотность";
+            this.label44.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tbValueCO2Default
+            // 
+            this.tbValueCO2Default.Location = new System.Drawing.Point(199, 78);
+            this.tbValueCO2Default.Name = "tbValueCO2Default";
+            this.tbValueCO2Default.ReadOnly = true;
+            this.tbValueCO2Default.Size = new System.Drawing.Size(100, 20);
+            this.tbValueCO2Default.TabIndex = 40;
+            // 
+            // tbValueCH4Default
+            // 
+            this.tbValueCH4Default.Location = new System.Drawing.Point(199, 52);
+            this.tbValueCH4Default.Name = "tbValueCH4Default";
+            this.tbValueCH4Default.ReadOnly = true;
+            this.tbValueCH4Default.Size = new System.Drawing.Size(100, 20);
+            this.tbValueCH4Default.TabIndex = 39;
+            // 
+            // label37
+            // 
+            this.label37.AutoEllipsis = true;
+            this.label37.Location = new System.Drawing.Point(183, 6);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(129, 42);
+            this.label37.TabIndex = 38;
+            this.label37.Text = "Объемная доля в природном газе (по умолч.):";
+            this.label37.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(9, 78);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(31, 13);
+            this.label17.TabIndex = 37;
+            this.label17.Text = "CO2:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(9, 55);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(31, 13);
+            this.label15.TabIndex = 36;
+            this.label15.Text = "CH4:";
+            // 
+            // label14
+            // 
+            this.label14.AutoEllipsis = true;
+            this.label14.Location = new System.Drawing.Point(441, 12);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(131, 31);
+            this.label14.TabIndex = 35;
+            this.label14.Text = "Фугитивные выбросы за отчётный период";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tbFigusiveCO2
+            // 
+            this.tbFigusiveCO2.Location = new System.Drawing.Point(456, 78);
+            this.tbFigusiveCO2.Name = "tbFigusiveCO2";
+            this.tbFigusiveCO2.ReadOnly = true;
+            this.tbFigusiveCO2.Size = new System.Drawing.Size(100, 20);
+            this.tbFigusiveCO2.TabIndex = 33;
+            // 
+            // tbCO2Density
+            // 
+            this.tbCO2Density.Location = new System.Drawing.Point(330, 78);
+            this.tbCO2Density.Name = "tbCO2Density";
+            this.tbCO2Density.ReadOnly = true;
+            this.tbCO2Density.Size = new System.Drawing.Size(100, 20);
+            this.tbCO2Density.TabIndex = 32;
+            // 
             // emissionsResult4
             // 
             this.emissionsResult4.AutoSize = true;
             this.emissionsResult4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.emissionsResult4.Location = new System.Drawing.Point(515, 436);
+            this.emissionsResult4.Location = new System.Drawing.Point(572, 436);
             this.emissionsResult4.Name = "emissionsResult4";
             this.emissionsResult4.Size = new System.Drawing.Size(19, 20);
             this.emissionsResult4.TabIndex = 31;
             this.emissionsResult4.Text = "0";
             // 
-            // label5
-            // 
-            this.label5.AutoEllipsis = true;
-            this.label5.Location = new System.Drawing.Point(6, 167);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(151, 27);
-            this.label5.TabIndex = 26;
-            this.label5.Text = "Плотность СО2 (кг/м3)";
-            // 
             // FugitiveCO2DensityTB
             // 
-            this.FugitiveCO2DensityTB.Location = new System.Drawing.Point(163, 170);
+            this.FugitiveCO2DensityTB.Location = new System.Drawing.Point(330, 52);
             this.FugitiveCO2DensityTB.Name = "FugitiveCO2DensityTB";
             this.FugitiveCO2DensityTB.ReadOnly = true;
             this.FugitiveCO2DensityTB.Size = new System.Drawing.Size(100, 20);
             this.FugitiveCO2DensityTB.TabIndex = 25;
             // 
-            // label6
+            // tbFigusiveCH4
             // 
-            this.label6.AutoEllipsis = true;
-            this.label6.Location = new System.Drawing.Point(6, 129);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(151, 31);
-            this.label6.TabIndex = 24;
-            this.label6.Text = "Плотность CH4 (кг/м3)";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(163, 129);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 23;
+            this.tbFigusiveCH4.Location = new System.Drawing.Point(456, 52);
+            this.tbFigusiveCH4.Name = "tbFigusiveCH4";
+            this.tbFigusiveCH4.ReadOnly = true;
+            this.tbFigusiveCH4.Size = new System.Drawing.Size(100, 20);
+            this.tbFigusiveCH4.TabIndex = 23;
             // 
             // calculateFugitiveBTN
             // 
@@ -1474,11 +1754,13 @@ namespace Eco
             // cbSaveFugitive
             // 
             this.cbSaveFugitive.AutoSize = true;
+            this.cbSaveFugitive.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.cbSaveFugitive.CausesValidation = false;
             this.cbSaveFugitive.Location = new System.Drawing.Point(20, 400);
             this.cbSaveFugitive.Name = "cbSaveFugitive";
-            this.cbSaveFugitive.Size = new System.Drawing.Size(157, 17);
+            this.cbSaveFugitive.Size = new System.Drawing.Size(183, 17);
             this.cbSaveFugitive.TabIndex = 20;
-            this.cbSaveFugitive.Text = "Сохранить рассчет в базу";
+            this.cbSaveFugitive.Text = "с сохранением расчёта в базу ";
             this.cbSaveFugitive.UseVisualStyleBackColor = true;
             // 
             // label4
@@ -1488,46 +1770,40 @@ namespace Eco
             this.label4.ForeColor = System.Drawing.Color.Red;
             this.label4.Location = new System.Drawing.Point(375, 436);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(134, 20);
+            this.label4.Size = new System.Drawing.Size(191, 20);
             this.label4.TabIndex = 19;
-            this.label4.Text = "Выбросы CO2: ";
-            // 
-            // ObjemDolaCO2
-            // 
-            this.ObjemDolaCO2.AutoEllipsis = true;
-            this.ObjemDolaCO2.Location = new System.Drawing.Point(6, 91);
-            this.ObjemDolaCO2.Name = "ObjemDolaCO2";
-            this.ObjemDolaCO2.Size = new System.Drawing.Size(151, 27);
-            this.ObjemDolaCO2.TabIndex = 18;
-            this.ObjemDolaCO2.Text = "Объёмная доля СО2. в природном газе (факт.)";
+            this.label4.Text = "Выбросы CO2 (тонн): ";
             // 
             // CO2ShareTB
             // 
-            this.CO2ShareTB.Location = new System.Drawing.Point(163, 94);
+            this.CO2ShareTB.Location = new System.Drawing.Point(57, 78);
             this.CO2ShareTB.Name = "CO2ShareTB";
             this.CO2ShareTB.Size = new System.Drawing.Size(100, 20);
             this.CO2ShareTB.TabIndex = 17;
+            this.CO2ShareTB.TextChanged += new System.EventHandler(this.CO2ShareTB_TextChanged);
             // 
             // lblObjemDolaCH4
             // 
             this.lblObjemDolaCH4.AutoEllipsis = true;
-            this.lblObjemDolaCH4.Location = new System.Drawing.Point(6, 46);
+            this.lblObjemDolaCH4.Location = new System.Drawing.Point(48, 12);
             this.lblObjemDolaCH4.Name = "lblObjemDolaCH4";
-            this.lblObjemDolaCH4.Size = new System.Drawing.Size(151, 31);
+            this.lblObjemDolaCH4.Size = new System.Drawing.Size(129, 31);
             this.lblObjemDolaCH4.TabIndex = 16;
-            this.lblObjemDolaCH4.Text = "Объемная доля CH4 в природном газе (факт.):";
+            this.lblObjemDolaCH4.Text = "Объемная доля в природном газе (факт.):";
+            this.lblObjemDolaCH4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CH4ShareTB
             // 
-            this.CH4ShareTB.Location = new System.Drawing.Point(163, 53);
+            this.CH4ShareTB.Location = new System.Drawing.Point(57, 52);
             this.CH4ShareTB.Name = "CH4ShareTB";
             this.CH4ShareTB.Size = new System.Drawing.Size(100, 20);
             this.CH4ShareTB.TabIndex = 15;
+            this.CH4ShareTB.TextChanged += new System.EventHandler(this.CH4ShareTB_TextChanged);
             // 
             // lblRasxodGaza
             // 
             this.lblRasxodGaza.AutoSize = true;
-            this.lblRasxodGaza.Location = new System.Drawing.Point(6, 16);
+            this.lblRasxodGaza.Location = new System.Drawing.Point(3, 123);
             this.lblRasxodGaza.Name = "lblRasxodGaza";
             this.lblRasxodGaza.Size = new System.Drawing.Size(120, 13);
             this.lblRasxodGaza.TabIndex = 14;
@@ -1535,13 +1811,14 @@ namespace Eco
             // 
             // gasUsageFugitiveTB
             // 
-            this.gasUsageFugitiveTB.Location = new System.Drawing.Point(163, 13);
+            this.gasUsageFugitiveTB.Location = new System.Drawing.Point(148, 120);
             this.gasUsageFugitiveTB.Name = "gasUsageFugitiveTB";
             this.gasUsageFugitiveTB.Size = new System.Drawing.Size(100, 20);
             this.gasUsageFugitiveTB.TabIndex = 13;
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.lblTextErrortranstort);
             this.tabPage5.Controls.Add(this.emissionsResult5);
             this.tabPage5.Controls.Add(this.tbKoefVibrosov);
             this.tabPage5.Controls.Add(this.lblKoefVibrosov);
@@ -1564,11 +1841,24 @@ namespace Eco
             this.tabPage5.Text = "Транспорт";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // lblTextErrortranstort
+            // 
+            this.lblTextErrortranstort.AutoSize = true;
+            this.lblTextErrortranstort.BackColor = System.Drawing.Color.Transparent;
+            this.lblTextErrortranstort.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.lblTextErrortranstort.ForeColor = System.Drawing.Color.Red;
+            this.lblTextErrortranstort.Location = new System.Drawing.Point(20, 247);
+            this.lblTextErrortranstort.Name = "lblTextErrortranstort";
+            this.lblTextErrortranstort.Size = new System.Drawing.Size(193, 18);
+            this.lblTextErrortranstort.TabIndex = 29;
+            this.lblTextErrortranstort.Text = "Неверный формат данных";
+            this.lblTextErrortranstort.Visible = false;
+            // 
             // emissionsResult5
             // 
             this.emissionsResult5.AutoSize = true;
             this.emissionsResult5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.emissionsResult5.Location = new System.Drawing.Point(484, 436);
+            this.emissionsResult5.Location = new System.Drawing.Point(509, 436);
             this.emissionsResult5.Name = "emissionsResult5";
             this.emissionsResult5.Size = new System.Drawing.Size(19, 20);
             this.emissionsResult5.TabIndex = 28;
@@ -1622,9 +1912,9 @@ namespace Eco
             this.lblRasxodTonn.AutoSize = true;
             this.lblRasxodTonn.Location = new System.Drawing.Point(27, 40);
             this.lblRasxodTonn.Name = "lblRasxodTonn";
-            this.lblRasxodTonn.Size = new System.Drawing.Size(78, 13);
+            this.lblRasxodTonn.Size = new System.Drawing.Size(33, 13);
             this.lblRasxodTonn.TabIndex = 22;
-            this.lblRasxodTonn.Text = "тонн (тыс. м3)";
+            this.lblRasxodTonn.Text = "тонн ";
             // 
             // calculateTransportBTN
             // 
@@ -1642,9 +1932,9 @@ namespace Eco
             this.cbSaveResultTransport.AutoSize = true;
             this.cbSaveResultTransport.Location = new System.Drawing.Point(20, 400);
             this.cbSaveResultTransport.Name = "cbSaveResultTransport";
-            this.cbSaveResultTransport.Size = new System.Drawing.Size(157, 17);
+            this.cbSaveResultTransport.Size = new System.Drawing.Size(183, 17);
             this.cbSaveResultTransport.TabIndex = 20;
-            this.cbSaveResultTransport.Text = "Сохранить рассчет в базу";
+            this.cbSaveResultTransport.Text = "с сохранением расчёта в базу ";
             this.cbSaveResultTransport.UseVisualStyleBackColor = true;
             // 
             // lblVibrosResult
@@ -1652,11 +1942,11 @@ namespace Eco
             this.lblVibrosResult.AutoSize = true;
             this.lblVibrosResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblVibrosResult.ForeColor = System.Drawing.Color.Red;
-            this.lblVibrosResult.Location = new System.Drawing.Point(344, 436);
+            this.lblVibrosResult.Location = new System.Drawing.Point(312, 436);
             this.lblVibrosResult.Name = "lblVibrosResult";
-            this.lblVibrosResult.Size = new System.Drawing.Size(134, 20);
+            this.lblVibrosResult.Size = new System.Drawing.Size(191, 20);
             this.lblVibrosResult.TabIndex = 19;
-            this.lblVibrosResult.Text = "Выбросы CO2: ";
+            this.lblVibrosResult.Text = "Выбросы CO2 (тонн): ";
             // 
             // tbRasxodToplivaRaschet
             // 
@@ -1681,6 +1971,7 @@ namespace Eco
             this.lUsageTransportTB.Name = "lUsageTransportTB";
             this.lUsageTransportTB.Size = new System.Drawing.Size(100, 20);
             this.lUsageTransportTB.TabIndex = 15;
+            this.lUsageTransportTB.TextChanged += new System.EventHandler(this.lUsageTransportTB_TextChanged);
             // 
             // lblRasxodTopliva
             // 
@@ -1698,9 +1989,14 @@ namespace Eco
             this.tUsageTransportTB.Name = "tUsageTransportTB";
             this.tUsageTransportTB.Size = new System.Drawing.Size(100, 20);
             this.tUsageTransportTB.TabIndex = 13;
+            this.tUsageTransportTB.TextChanged += new System.EventHandler(this.TransportChanged);
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.lblErrorKosVibros);
+            this.tabPage6.Controls.Add(this.tbVibrosTeplo);
+            this.tabPage6.Controls.Add(this.tbVibrosElectro);
+            this.tabPage6.Controls.Add(this.label7);
             this.tabPage6.Controls.Add(this.emissionsResult6);
             this.tabPage6.Controls.Add(this.lblZnaxZakyp);
             this.tabPage6.Controls.Add(this.lblTeplovEnergy);
@@ -1718,11 +2014,49 @@ namespace Eco
             this.tabPage6.Text = "Косвенные выбросы";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
+            // lblErrorKosVibros
+            // 
+            this.lblErrorKosVibros.AutoSize = true;
+            this.lblErrorKosVibros.BackColor = System.Drawing.Color.Transparent;
+            this.lblErrorKosVibros.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.lblErrorKosVibros.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorKosVibros.Location = new System.Drawing.Point(19, 112);
+            this.lblErrorKosVibros.Name = "lblErrorKosVibros";
+            this.lblErrorKosVibros.Size = new System.Drawing.Size(193, 18);
+            this.lblErrorKosVibros.TabIndex = 53;
+            this.lblErrorKosVibros.Text = "Неверный формат данных";
+            this.lblErrorKosVibros.Visible = false;
+            // 
+            // tbVibrosTeplo
+            // 
+            this.tbVibrosTeplo.Enabled = false;
+            this.tbVibrosTeplo.Location = new System.Drawing.Point(311, 65);
+            this.tbVibrosTeplo.Name = "tbVibrosTeplo";
+            this.tbVibrosTeplo.Size = new System.Drawing.Size(100, 20);
+            this.tbVibrosTeplo.TabIndex = 52;
+            // 
+            // tbVibrosElectro
+            // 
+            this.tbVibrosElectro.Enabled = false;
+            this.tbVibrosElectro.Location = new System.Drawing.Point(311, 42);
+            this.tbVibrosElectro.Name = "tbVibrosElectro";
+            this.tbVibrosElectro.Size = new System.Drawing.Size(100, 20);
+            this.tbVibrosElectro.TabIndex = 51;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(278, 18);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(176, 13);
+            this.label7.TabIndex = 50;
+            this.label7.Text = "Выбросы СО2 при производстве:";
+            // 
             // emissionsResult6
             // 
             this.emissionsResult6.AutoSize = true;
             this.emissionsResult6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.emissionsResult6.Location = new System.Drawing.Point(480, 436);
+            this.emissionsResult6.Location = new System.Drawing.Point(537, 436);
             this.emissionsResult6.Name = "emissionsResult6";
             this.emissionsResult6.Size = new System.Drawing.Size(19, 20);
             this.emissionsResult6.TabIndex = 49;
@@ -1772,9 +2106,9 @@ namespace Eco
             this.cbSaveResultKocVibros.AutoSize = true;
             this.cbSaveResultKocVibros.Location = new System.Drawing.Point(20, 400);
             this.cbSaveResultKocVibros.Name = "cbSaveResultKocVibros";
-            this.cbSaveResultKocVibros.Size = new System.Drawing.Size(157, 17);
+            this.cbSaveResultKocVibros.Size = new System.Drawing.Size(183, 17);
             this.cbSaveResultKocVibros.TabIndex = 35;
-            this.cbSaveResultKocVibros.Text = "Сохранить рассчет в базу";
+            this.cbSaveResultKocVibros.Text = "с сохранением расчёта в базу ";
             this.cbSaveResultKocVibros.UseVisualStyleBackColor = true;
             // 
             // lblVibros
@@ -1784,9 +2118,9 @@ namespace Eco
             this.lblVibros.ForeColor = System.Drawing.Color.Red;
             this.lblVibros.Location = new System.Drawing.Point(340, 436);
             this.lblVibros.Name = "lblVibros";
-            this.lblVibros.Size = new System.Drawing.Size(134, 20);
+            this.lblVibros.Size = new System.Drawing.Size(191, 20);
             this.lblVibros.TabIndex = 34;
-            this.lblVibros.Text = "Выбросы CO2: ";
+            this.lblVibros.Text = "Выбросы CO2 (тонн): ";
             // 
             // heatUsageTB
             // 
@@ -1794,6 +2128,7 @@ namespace Eco
             this.heatUsageTB.Name = "heatUsageTB";
             this.heatUsageTB.Size = new System.Drawing.Size(100, 20);
             this.heatUsageTB.TabIndex = 31;
+            this.heatUsageTB.TextChanged += new System.EventHandler(this.heatUsageTB_TextChanged);
             // 
             // lblZakypki
             // 
@@ -1811,10 +2146,12 @@ namespace Eco
             this.electroUsageTB.Name = "electroUsageTB";
             this.electroUsageTB.Size = new System.Drawing.Size(100, 20);
             this.electroUsageTB.TabIndex = 29;
+            this.electroUsageTB.TextChanged += new System.EventHandler(this.electroUsageTB_TextChanged);
             // 
             // tabPage7
             // 
-            this.tabPage7.Controls.Add(this.button2);
+            this.tabPage7.Controls.Add(this.indirectEmissionsCb);
+            this.tabPage7.Controls.Add(this.primaryEmissionsCb);
             this.tabPage7.Controls.Add(this.statsDatagrid);
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
@@ -1823,17 +2160,37 @@ namespace Eco
             this.tabPage7.Text = "Статистика";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // indirectEmissionsCb
             // 
-            this.button2.Location = new System.Drawing.Point(510, 458);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(205, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Сохранить на компьютер";
-            this.button2.UseVisualStyleBackColor = true;
+            this.indirectEmissionsCb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.indirectEmissionsCb.AutoSize = true;
+            this.indirectEmissionsCb.Location = new System.Drawing.Point(126, 458);
+            this.indirectEmissionsCb.Name = "indirectEmissionsCb";
+            this.indirectEmissionsCb.Size = new System.Drawing.Size(132, 17);
+            this.indirectEmissionsCb.TabIndex = 3;
+            this.indirectEmissionsCb.Text = "Косвенные выбросы";
+            this.indirectEmissionsCb.UseVisualStyleBackColor = true;
+            this.indirectEmissionsCb.CheckedChanged += new System.EventHandler(this.indirectEmissionsCb_CheckedChanged);
+            // 
+            // primaryEmissionsCb
+            // 
+            this.primaryEmissionsCb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.primaryEmissionsCb.AutoSize = true;
+            this.primaryEmissionsCb.Location = new System.Drawing.Point(3, 458);
+            this.primaryEmissionsCb.Name = "primaryEmissionsCb";
+            this.primaryEmissionsCb.Size = new System.Drawing.Size(117, 17);
+            this.primaryEmissionsCb.TabIndex = 2;
+            this.primaryEmissionsCb.Text = "Прямые выбросы";
+            this.primaryEmissionsCb.UseVisualStyleBackColor = true;
+            this.primaryEmissionsCb.CheckedChanged += new System.EventHandler(this.primaryEmissionsCb_CheckedChanged);
             // 
             // statsDatagrid
             // 
+            this.statsDatagrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.statsDatagrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.statsDatagrid.BackgroundColor = System.Drawing.Color.White;
             this.statsDatagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.statsDatagrid.Location = new System.Drawing.Point(3, 3);
             this.statsDatagrid.Name = "statsDatagrid";
@@ -1842,13 +2199,80 @@ namespace Eco
             this.statsDatagrid.Size = new System.Drawing.Size(712, 449);
             this.statsDatagrid.TabIndex = 0;
             // 
+            // btToExcel
+            // 
+            this.btToExcel.ImageIndex = 2;
+            this.btToExcel.ImageList = this.imageList1;
+            this.btToExcel.Location = new System.Drawing.Point(50, 4);
+            this.btToExcel.Name = "btToExcel";
+            this.btToExcel.Size = new System.Drawing.Size(31, 34);
+            this.btToExcel.TabIndex = 12;
+            this.btToExcel.UseVisualStyleBackColor = true;
+            this.btToExcel.Click += new System.EventHandler(this.btToExcel_Click);
+            // 
+            // lblFullPath
+            // 
+            this.lblFullPath.AutoSize = true;
+            this.lblFullPath.Location = new System.Drawing.Point(345, 13);
+            this.lblFullPath.Name = "lblFullPath";
+            this.lblFullPath.Size = new System.Drawing.Size(0, 13);
+            this.lblFullPath.TabIndex = 4;
+            // 
+            // cmsForSourceFuel
+            // 
+            this.cmsForSourceFuel.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem3});
+            this.cmsForSourceFuel.Name = "cmsForSourceOFEmission";
+            this.cmsForSourceFuel.Size = new System.Drawing.Size(199, 26);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(198, 22);
+            this.toolStripMenuItem3.Text = "Удалить тип выбросов";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            // 
+            // lblSelectedNodeId
+            // 
+            this.lblSelectedNodeId.AutoSize = true;
+            this.lblSelectedNodeId.Location = new System.Drawing.Point(819, 13);
+            this.lblSelectedNodeId.Name = "lblSelectedNodeId";
+            this.lblSelectedNodeId.Size = new System.Drawing.Size(0, 13);
+            this.lblSelectedNodeId.TabIndex = 13;
+            this.lblSelectedNodeId.Visible = false;
+            // 
+            // lblLastSave
+            // 
+            this.lblLastSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblLastSave.AutoSize = true;
+            this.lblLastSave.Location = new System.Drawing.Point(342, 557);
+            this.lblLastSave.Name = "lblLastSave";
+            this.lblLastSave.Size = new System.Drawing.Size(131, 13);
+            this.lblLastSave.TabIndex = 12;
+            this.lblLastSave.Text = "Последнее сохранение: ";
+            this.lblLastSave.Visible = false;
+            // 
+            // lblWhoLastSave
+            // 
+            this.lblWhoLastSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblWhoLastSave.AutoSize = true;
+            this.lblWhoLastSave.Location = new System.Drawing.Point(476, 557);
+            this.lblWhoLastSave.Name = "lblWhoLastSave";
+            this.lblWhoLastSave.Size = new System.Drawing.Size(0, 13);
+            this.lblWhoLastSave.TabIndex = 13;
+            this.lblWhoLastSave.Visible = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1079, 575);
+            this.Controls.Add(this.lblWhoLastSave);
+            this.Controls.Add(this.lblSelectedNodeId);
+            this.Controls.Add(this.lblLastSave);
+            this.Controls.Add(this.btToExcel);
+            this.Controls.Add(this.lblFullPath);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.btRefresh);
             this.Controls.Add(this.buttonAddCompanyDO);
             this.Controls.Add(this.treeView1);
             this.Name = "MainForm";
@@ -1875,8 +2299,11 @@ namespace Eco
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
             this.tabPage7.ResumeLayout(false);
+            this.tabPage7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statsDatagrid)).EndInit();
+            this.cmsForSourceFuel.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1891,7 +2318,6 @@ namespace Eco
         private System.Windows.Forms.ToolStripMenuItem tsmEditCompany;
         private System.Windows.Forms.ToolStripMenuItem tsmDeleteCompany;
         private System.Windows.Forms.ToolStripMenuItem tsmAddProsuctionSide;
-        private System.Windows.Forms.Button btRefresh;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ToolStripMenuItem addProductionSideToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip cmsForSourceOFEmission;
@@ -1974,17 +2400,14 @@ namespace Eco
         private System.Windows.Forms.Button calculateFugitiveBTN;
         private System.Windows.Forms.CheckBox cbSaveFugitive;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label ObjemDolaCO2;
         private System.Windows.Forms.TextBox CO2ShareTB;
         private System.Windows.Forms.Label lblObjemDolaCH4;
         private System.Windows.Forms.TextBox CH4ShareTB;
         private System.Windows.Forms.Label lblRasxodGaza;
         private System.Windows.Forms.TextBox gasUsageFugitiveTB;
         private System.Windows.Forms.Label emissionsResult1;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox FugitiveCO2DensityTB;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox tbFigusiveCH4;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.TextBox fluidUsageTJTB;
         private System.Windows.Forms.Label label13;
@@ -2045,8 +2468,47 @@ namespace Eco
         private System.Windows.Forms.TextBox totalGases;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DataGridView statsDatagrid;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btToExcel;
+        private System.Windows.Forms.Label lblFullPath;
+        private System.Windows.Forms.ContextMenuStrip cmsForSourceFuel;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.CheckBox indirectEmissionsCb;
+        private System.Windows.Forms.CheckBox primaryEmissionsCb;
+        private System.Windows.Forms.Label lblSelectedNodeId;
+        private System.Windows.Forms.Label lblWhoLastSave;
+        private System.Windows.Forms.Label lblLastSave;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox tbCoefEmisson;
+        private System.Windows.Forms.TextBox tbVibrosTeplo;
+        private System.Windows.Forms.TextBox tbVibrosElectro;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tbFigusiveCO2;
+        private System.Windows.Forms.TextBox tbCO2Density;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.TextBox tbValueCO2Default;
+        private System.Windows.Forms.TextBox tbValueCH4Default;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox tbKoefVibrosCO2;
+        private System.Windows.Forms.TextBox tbKoefVibrosCH4;
+        private System.Windows.Forms.TextBox tbVibrosCO2;
+        private System.Windows.Forms.TextBox tbVibrosCH4;
+        private System.Windows.Forms.TextBox tbKoefNedoj;
+        private System.Windows.Forms.TextBox tbDensityMetan;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblTextErrortranstort;
+        private System.Windows.Forms.Label lblErrorKosVibros;
+        private System.Windows.Forms.Label lblErrorFigusive;
+        private System.Windows.Forms.Label lblErrorFlare;
+        private System.Windows.Forms.Label lblErrorFluid;
+        private System.Windows.Forms.Label lblErrorGas;
     }
 }
 

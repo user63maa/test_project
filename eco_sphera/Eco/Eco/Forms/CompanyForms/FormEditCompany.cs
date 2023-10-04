@@ -13,6 +13,7 @@ namespace Eco.Forms.CompanyForms
 {
     public partial class FormEditCompany : Form
     {
+        public TreeNode selectedNode { get; set; }
         public FormEditCompany()
         {
             InitializeComponent();
@@ -46,7 +47,8 @@ namespace Eco.Forms.CompanyForms
                 {
                     CompanyDODADO cmpADO = new CompanyDODADO();
                     cmpADO.Edit(int.Parse(lblId.Text), tbNameCompany.Text, tbShortNameCompany.Text);
-                    this.Close();
+                    selectedNode.Text = tbNameCompany.Text;
+                    this.Close();                   
 
                 }
             }

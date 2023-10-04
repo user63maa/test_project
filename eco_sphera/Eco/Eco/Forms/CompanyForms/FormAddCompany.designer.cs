@@ -89,6 +89,7 @@ namespace Eco.Forms.CompanyForms
             this.Controls.Add(this.tbNameCompany);
             this.Controls.Add(this.buttonAddCompanyDO);
             this.Name = "FormAddCompany";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Добавление дочерней компании";
             this.Load += new System.EventHandler(this.FormAddCompany_Load);
             this.ResumeLayout(false);

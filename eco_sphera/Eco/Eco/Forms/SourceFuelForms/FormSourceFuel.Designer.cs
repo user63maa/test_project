@@ -39,7 +39,6 @@ namespace Eco.Forms.SourceFuelForms
             // 
             // cbSourceFuel
             // 
-            this.cbSourceFuel.FormattingEnabled = true;
             this.cbSourceFuel.Location = new System.Drawing.Point(23, 51);
             this.cbSourceFuel.Name = "cbSourceFuel";
             this.cbSourceFuel.Size = new System.Drawing.Size(246, 21);
@@ -66,7 +65,6 @@ namespace Eco.Forms.SourceFuelForms
             // 
             // cbTypeOfFuel
             // 
-            this.cbTypeOfFuel.FormattingEnabled = true;
             this.cbTypeOfFuel.Location = new System.Drawing.Point(23, 133);
             this.cbTypeOfFuel.Name = "cbTypeOfFuel";
             this.cbTypeOfFuel.Size = new System.Drawing.Size(246, 21);
@@ -105,6 +103,7 @@ namespace Eco.Forms.SourceFuelForms
             this.Controls.Add(this.cbSourceFuel);
             this.Name = "FormSourceFuel";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Подсчёт выбросов";
             this.Load += new System.EventHandler(this.FormCategoryOfFuel_Load);
             this.ResumeLayout(false);

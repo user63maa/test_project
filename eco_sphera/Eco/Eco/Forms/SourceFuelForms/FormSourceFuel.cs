@@ -16,6 +16,7 @@ namespace Eco.Forms.SourceFuelForms
 {
     public partial class FormSourceFuel : Form
     {
+        public TreeNode selectNode { get; set; }
         public FormSourceFuel()
         {
             InitializeComponent();
@@ -31,7 +32,6 @@ namespace Eco.Forms.SourceFuelForms
             //}
         }
 
-
         private void FormCategoryOfFuel_Load(object sender, EventArgs e)
         {
 
@@ -46,6 +46,7 @@ namespace Eco.Forms.SourceFuelForms
         {
             if (cbSourceFuel.SelectedItem != null)
             {
+                label2.Text = "Выберите топливо";
                 int selecteditemId = ((CategoryOfFuel)cbSourceFuel.SelectedItem).id;
                 if (selecteditemId == 1 || selecteditemId == 2 || selecteditemId == 3 || selecteditemId == 8 || selecteditemId == 9)
                 {
@@ -83,6 +84,7 @@ namespace Eco.Forms.SourceFuelForms
                         case 11:
                             ViewTypeOfFuelADO viewTypeOfFuelADO4 = new ViewTypeOfFuelADO();
                             forcb = viewTypeOfFuelADO4.getForSourceFromEnergySystem();
+                            label2.Text = "Выберите энергетическое топливо";
                             cbTypeOfFuel.DataSource = forcb;
                             cbTypeOfFuel.DisplayMember = "Name";
                             cbTypeOfFuel.ValueMember = "id";
@@ -110,8 +112,19 @@ namespace Eco.Forms.SourceFuelForms
                     int selectedCategoryOfFuelnId = ((ViewTypeOfFuel)cbTypeOfFuel.SelectedItem).id;
                     string selectedTypeOfFuelName = ((ViewTypeOfFuel)cbTypeOfFuel.SelectedItem).Name;
                     int sourceEmissionId = int.Parse(lblSourceOfEmissionId.Text);
-                    soefado.Add(sourceEmissionId, selectedCategorynId, selectedCategoryOfFuelnId,selectedTypeOfFuelName) ;
-                    this.Close();
+                    int newId = soefado.Add(sourceEmissionId, selectedCategorynId, selectedCategoryOfFuelnId,selectedTypeOfFuelName) ;
+                    if (newId != 0)
+                    {
+                        CategoryFuelADO cfADO = new CategoryFuelADO();
+                        CategoryOfFuel cof = cfADO.getObject(selectedCategorynId);
+                        TreeNode newNode = new TreeNode(cof.CategoryName + " (" + selectedTypeOfFuelName + ")");
+                        newNode.Tag = newId;
+                        selectNode.Nodes.Add(newNode);
+                        this.Close();
+                    }
+                    else
+                        MessageBox.Show("Ошибка");
+                    
 
                 }
 

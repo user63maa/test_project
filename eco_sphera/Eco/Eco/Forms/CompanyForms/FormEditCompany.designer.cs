@@ -105,6 +105,7 @@ namespace Eco.Forms.CompanyForms
             this.Controls.Add(this.tbNameCompany);
             this.Controls.Add(this.buttonEditCompanyDO);
             this.Name = "FormEditCompany";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Редактирование компании";
             this.Load += new System.EventHandler(this.FormEditCompany_Load);
             this.ResumeLayout(false);

@@ -15,6 +15,7 @@ namespace Eco.Forms.ProductionSideForms
     public partial class FormProductionSide : Form
     {
         bool edit = false;
+        public TreeNode selectnode { get; set; }
         public FormProductionSide()
         {
             InitializeComponent();
@@ -61,8 +62,16 @@ namespace Eco.Forms.ProductionSideForms
                 else
                 {
                     ProductionSideADO psado = new ProductionSideADO();
-                    psado.Add(int.Parse(lblForIdCompany.Text), tbNamePoductionSide.Text, tbRegion.Text, tbAdminArea.Text);
-                    this.Close();
+                    int newProdSiteId= psado.Add(int.Parse(lblForIdCompany.Text), tbNamePoductionSide.Text, tbRegion.Text, tbAdminArea.Text);
+                    if (newProdSiteId != 0)
+                    {
+                        TreeNode newNode = new TreeNode(tbNamePoductionSide.Text);
+                        newNode.Tag = newProdSiteId;
+                        selectnode.Nodes.Add(newNode);
+                        this.Close();
+                    }
+                    else
+                        MessageBox.Show("Ошибка");
                 }
             }
             else
@@ -74,6 +83,7 @@ namespace Eco.Forms.ProductionSideForms
                 {
                     ProductionSideADO psado = new ProductionSideADO();
                     psado.Edit(int.Parse(lblForIdCompany.Text), tbNamePoductionSide.Text, tbRegion.Text, tbAdminArea.Text);
+                    selectnode.Text = tbNamePoductionSide.Text;
                     this.Close();
                 }
             }

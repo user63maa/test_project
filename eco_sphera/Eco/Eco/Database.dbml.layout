@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 21.125, 19" name="Database">
+  <DataContextMoniker Name="/DatabaseDataContext" />
+  <nestedChildShapes>
+    <classShape Id="e96c6261-37f4-4fba-93a7-c8269aa2e4c6" absoluteBounds="1.125, 0.75, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/DatabaseDataContext/Access" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3fe1a46f-6da3-4f0d-8194-50c2cba4f523" absoluteBounds="1.1400000000000001, 1.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="69e7c40f-b7c5-476a-9deb-bb41c0e53a4e" absoluteBounds="3.5, 0.75, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DatabaseDataContext/AccessRole" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3f10fdad-64f0-4555-b7c9-473c583eb49e" absoluteBounds="3.515, 1.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.5 : 1.44314697265625); (3.125 : 1.44314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DatabaseDataContext/AccessRole/AccessRole_Access" />
+      <nodes>
+        <classShapeMoniker Id="69e7c40f-b7c5-476a-9deb-bb41c0e53a4e" />
+        <classShapeMoniker Id="e96c6261-37f4-4fba-93a7-c8269aa2e4c6" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="b900dea3-d182-4032-8cd0-d54ac7266f49" absoluteBounds="6.5, 0.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DatabaseDataContext/CalculationCompositionForm" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d0e5845d-2053-426c-bbc6-126eea67e7f2" absoluteBounds="6.5150000000000006, 1.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="63c18a00-3f45-4bb1-9237-52fb36874177" absoluteBounds="9.5, 0.75, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/DatabaseDataContext/CalculationCompositionForReport" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a664a139-921c-4d62-af22-b3f9010dac40" absoluteBounds="9.515, 1.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0bccff15-5704-44b7-9649-6d195fbfe739" absoluteBounds="6.375, 3, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/DatabaseDataContext/CalculationResult" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e8ec94cb-b5ea-4950-bec0-8b6f0d0a2604" absoluteBounds="6.39, 3.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(7.4375 : 3); (7.4375 : 2.32859537760417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DatabaseDataContext/CalculationResult/CalculationResult_CalculationCompositionForm" />
+      <nodes>
+        <classShapeMoniker Id="0bccff15-5704-44b7-9649-6d195fbfe739" />
+        <classShapeMoniker Id="b900dea3-d182-4032-8cd0-d54ac7266f49" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.375 : 3.71875); (9.59375 : 3.71875); (9.59375 : 2.52089680989583)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DatabaseDataContext/CalculationResult/CalculationResult_CalculationCompositionForReport" />
+      <nodes>
+        <classShapeMoniker Id="0bccff15-5704-44b7-9649-6d195fbfe739" />
+        <classShapeMoniker Id="63c18a00-3f45-4bb1-9237-52fb36874177" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="4e883f79-da18-43cd-9ddb-6cae6d6bce3f" absoluteBounds="9.75, 4.5, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DatabaseDataContext/CategoryOfFuel" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1fcb6493-5ed2-45c1-b85b-78c157e9bd9e" absoluteBounds="9.765, 4.9600000000000009, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6259cbcd-d1d6-40f3-96f7-fdd28faed900" absoluteBounds="18.875, 1.125, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DatabaseDataContext/CategoryOfFuelColumnsDictionary" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8bb58666-014a-4a08-9f24-1561a670f0b5" absoluteBounds="18.89, 1.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5aa9e751-9b1a-4f9f-b08c-1f7816420285" absoluteBounds="12.5, 0.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DatabaseDataContext/CompanyDO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bc359876-3128-46aa-8e52-a6852b9f81b6" absoluteBounds="12.515, 1.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4c51cb00-fbea-4fe7-8237-6c45d2359860" absoluteBounds="2, 3.375, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DatabaseDataContext/EnergySystem" />
+      <nestedChildShapes>
+        <elementListCompartment Id="750c67a1-876c-467e-91c4-fa70f1f7d390" absoluteBounds="2.0149999999999997, 3.8350000000000009, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3c3a4d1f-ab7b-4e5a-bd8b-b9f220849230" absoluteBounds="18.375, 3.125, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DatabaseDataContext/FlareCondition" />
+      <nestedChildShapes>
+        <elementListCompartment Id="95941cd7-38cc-4583-814c-74a9df47de6d" absoluteBounds="18.39, 3.5850000000000009, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7874de9c-05fa-4d88-bf66-af9c8544033d" absoluteBounds="15.625, 1, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DatabaseDataContext/FlareMeasurementCondition" />
+      <nestedChildShapes>
+        <elementListCompartment Id="633f3f96-283b-4904-a1dd-7533503ee9f4" absoluteBounds="15.64, 1.4600000000000009, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="af3b45b6-4ade-4a4f-8531-a19715299401" absoluteBounds="2.125, 5.75, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/DatabaseDataContext/GroupOfFuel" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0db791f9-550e-4547-b361-f719f0021888" absoluteBounds="2.14, 6.2100000000000009, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6f747732-4277-46db-ad7a-3ac0af76c5d2" absoluteBounds="12.375, 3.25, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/DatabaseDataContext/ProductionSite" />
+      <nestedChildShapes>
+        <elementListCompartment Id="203842f6-a226-48bc-b298-88333273adc8" absoluteBounds="12.39, 3.7100000000000009, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(13.4375 : 2.45359537760417); (13.4375 : 3.25)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DatabaseDataContext/CompanyDO/CompanyDO_ProductionSite" />
+      <nodes>
+        <classShapeMoniker Id="5aa9e751-9b1a-4f9f-b08c-1f7816420285" />
+        <classShapeMoniker Id="6f747732-4277-46db-ad7a-3ac0af76c5d2" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="e71c22f7-0311-4155-985a-cf47790e0b81" absoluteBounds="15.625, 3.75, 2, 1.9631982421875">
+      <DataClassMoniker Name="/DatabaseDataContext/SourceOfEmission" />
+      <nestedChildShapes>
+        <elementListCompartment Id="40613c7c-e3cd-42cf-8688-1932501633f5" absoluteBounds="15.64, 4.2100000000000009, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(14.375 : 4.57774983723958); (15.625 : 4.57774983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DatabaseDataContext/ProductionSite/ProductionSite_SourceOfEmission" />
+      <nodes>
+        <classShapeMoniker Id="6f747732-4277-46db-ad7a-3ac0af76c5d2" />
+        <classShapeMoniker Id="e71c22f7-0311-4155-985a-cf47790e0b81" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="34a1f248-549c-492d-b1fc-40a81cba2f46" absoluteBounds="7.375, 6.375, 2, 1.9631982421875">
+      <DataClassMoniker Name="/DatabaseDataContext/SourceOfEmissionFuel" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0344419d-1905-45ba-9268-2ebb54592530" absoluteBounds="7.3900000000000006, 6.8350000000000009, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(7.875 : 6.375); (7.875 : 4.77089680989583)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DatabaseDataContext/SourceOfEmissionFuel/SourceOfEmissionFuel_CalculationResult" />
+      <nodes>
+        <classShapeMoniker Id="34a1f248-549c-492d-b1fc-40a81cba2f46" />
+        <classShapeMoniker Id="0bccff15-5704-44b7-9649-6d195fbfe739" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9.75 : 6.07859537760417); (9.375 : 6.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DatabaseDataContext/CategoryOfFuel/CategoryOfFuel_SourceOfEmissionFuel" />
+      <nodes>
+        <classShapeMoniker Id="4e883f79-da18-43cd-9ddb-6cae6d6bce3f" />
+        <classShapeMoniker Id="34a1f248-549c-492d-b1fc-40a81cba2f46" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(16.625 : 5.7131982421875); (16.625 : 7.38785162109375); (11.0208333333333 : 7.38785162109375 : JumpStart); (10.8541666666667 : 7.38785162109375 : JumpEnd); (9.375 : 7.38785162109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DatabaseDataContext/SourceOfEmission/SourceOfEmission_SourceOfEmissionFuel" />
+      <nodes>
+        <classShapeMoniker Id="e71c22f7-0311-4155-985a-cf47790e0b81" />
+        <classShapeMoniker Id="34a1f248-549c-492d-b1fc-40a81cba2f46" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="c5845d0a-fc65-4d09-9ff8-a2923284e710" absoluteBounds="7.25, 9.25, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/DatabaseDataContext/TypeOfFuel" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3aa7f187-c28f-4795-bad4-07e06ea78383" absoluteBounds="7.2650000000000006, 9.71, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5d19f545-fbf4-45fe-a260-a1c0cc904609" absoluteBounds="4.75, 6.25, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DatabaseDataContext/TypeOfFuelForFlareCombustion" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6d6fcf2b-22b4-4497-b4fd-ada4e39dd2ea" absoluteBounds="4.7650000000000006, 6.7100000000000009, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="920968f5-eeed-42aa-9b56-0817d58b880c" absoluteBounds="4.75, 8.625, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DatabaseDataContext/TypeOfFuelForFugitivEmission" />
+      <nestedChildShapes>
+        <elementListCompartment Id="aeb11304-bcd9-4ebf-bc5c-2c60fabe227d" absoluteBounds="4.7650000000000006, 9.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7f9a36f9-02e4-4e0e-96d1-90929f25b00c" absoluteBounds="7.75, 16.75, 2, 1.9631982421875">
+      <DataClassMoniker Name="/DatabaseDataContext/TypeOfFuelForTransport" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1903faac-8af9-491f-9b1d-66864bec5d15" absoluteBounds="7.765, 17.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9c784cad-9c94-4b44-950f-d13f00c49a24" absoluteBounds="10.125, 8.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DatabaseDataContext/TypesForCategoryFuel" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a8ed22b0-6bb7-4a72-8e63-469cbe885fe3" absoluteBounds="10.14, 8.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(10.9375 : 6.07859537760417); (10.9375 : 8.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DatabaseDataContext/CategoryOfFuel/CategoryOfFuel_TypesForCategoryFuel" />
+      <nodes>
+        <classShapeMoniker Id="4e883f79-da18-43cd-9ddb-6cae6d6bce3f" />
+        <classShapeMoniker Id="9c784cad-9c94-4b44-950f-d13f00c49a24" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9.25 : 9.56814697265625); (10.125 : 9.56814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DatabaseDataContext/TypeOfFuel/TypeOfFuel_TypesForCategoryFuel" />
+      <nodes>
+        <classShapeMoniker Id="c5845d0a-fc65-4d09-9ff8-a2923284e710" />
+        <classShapeMoniker Id="9c784cad-9c94-4b44-950f-d13f00c49a24" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

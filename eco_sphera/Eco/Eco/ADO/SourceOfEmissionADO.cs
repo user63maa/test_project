@@ -120,23 +120,62 @@ namespace Eco.ADO
                 return 0;
             }
         }
-        public void Add(int production_id,string name,string code)
+        public int Add(int production_id,string name,string code)
         {
             try
             {
                 connection.Open();
-                string query = "INSERT INTO SourceOfEmission(ProductionSite_id,Name,Code) VALUES(@p_id,@name,@code)";
+                string query = "INSERT INTO SourceOfEmission(ProductionSite_id,Name,Code) VALUES(@p_id,@name,@code); SELECT SCOPE_IDENTITY()";
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@name", name);
                 cmd.Parameters.AddWithValue("@p_id", production_id);
                 cmd.Parameters.AddWithValue("@code", code);
-                cmd.ExecuteNonQuery();
+                int x = Convert.ToInt32(cmd.ExecuteScalar());
                 connection.Close();
-                MessageBox.Show("Источник добавлен");
+                return x;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ошибка при добавлении");
+                return 0;
+            }
+        }
+        public void Edit(int id, string name, string code)
+        {
+            try
+            {
+                connection.Open();
+                string query = "UPDATE SourceOfEmission SET Name=@name,Code=@code WHERE id=@id";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@code", code);
+                cmd.Parameters.AddWithValue("@id", id); 
+                cmd.ExecuteNonQuery();
+                connection.Close();
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка при изменении");
+                
+            }
+        }
+        public bool Delete(int id)
+        {
+            try
+            {
+                connection.Open();
+                string query = "UPDATE SourceOfEmission SET IsDeleted=1 WHERE id=@id";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+                connection.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка при удалении");
+                return false;
             }
         }
     }

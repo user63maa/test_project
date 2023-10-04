@@ -14,17 +14,11 @@ namespace Eco.Forms.NewSourceForms
 {
     public partial class FormNewSource : Form
     {
+        public TreeNode selectNode { get; set; }
+        public bool edit = false;
         public FormNewSource()
         {
             InitializeComponent();
-            //CategoryFuelADO afADO = new CategoryFuelADO();
-            //List<CategoryOfFuel> listCategories = afADO.getAll();
-
-            //cbCategoryOfFuel.Items.Add("Выбор типа топлива");
-            //foreach (CategoryOfFuel categ in listCategories )
-            //{
-            //    cbCategoryOfFuel.Items.Add(categ.CategoryName);
-            //}
         }
 
         private void FormNewSource_Load(object sender, EventArgs e)
@@ -32,33 +26,68 @@ namespace Eco.Forms.NewSourceForms
 
         }
 
-        private void cbCategoryOfFuel_SelectedIndexChanged(object sender, EventArgs e)
+        public void preEdit(int id)
         {
-            /*MessageBox.Show(cbCategoryOfFuel.SelectedItem.ToString());*/
+            SourceOfEmissionADO soeADO = new SourceOfEmissionADO();
+            SourceOfEmission soe = soeADO.getObject(id);
+            tbCodeSource.Text = soe.Code;
+            tbNameSource.Text = soe.Name;
+            btAddSource.Text = "Изменить";
+            lblIdProdSite.Text = id.ToString();
+            edit = true;
+
         }
 
         public void preAdd(int id)
         {
             lblIdProdSite.Text = id.ToString();
-
+            edit = false;
         }
         private void btAddSource_Click(object sender, EventArgs e)
-        {            
-            if (tbCodeSource.Text == "")
-                MessageBox.Show("Заполните код источника");
-            else {
-                if (tbNameSource.Text == "") {
-                    MessageBox.Show("Заполните название источника");
-                }
+        {
+            if (!edit)
+            {
+                if (tbCodeSource.Text == "")
+                    MessageBox.Show("Заполните код источника");
                 else
                 {
-                    SourceOfEmissionADO soeADO = new SourceOfEmissionADO();
-                    soeADO.Add(int.Parse(lblIdProdSite.Text), tbNameSource.Text, tbCodeSource.Text);
-                    
-                    this.Close();
+                    if (tbNameSource.Text == "")
+                    {
+                        MessageBox.Show("Заполните название источника");
+                    }
+                    else
+                    {
+                        SourceOfEmissionADO soeADO = new SourceOfEmissionADO();
+                        int newId = soeADO.Add(int.Parse(lblIdProdSite.Text), tbNameSource.Text, tbCodeSource.Text);
+                        TreeNode newNode = new TreeNode(tbNameSource.Text);
+                        newNode.Tag = newId;
+                        selectNode.Nodes.Add(newNode);
+                        this.Close();
+                    }
                 }
             }
-            CategoryFuelADO afADO = new CategoryFuelADO();
+            else
+            {
+
+                if (tbCodeSource.Text == "")
+                    MessageBox.Show("Заполните код источника");
+                else
+                {
+                    if (tbNameSource.Text == "")
+                    {
+                        MessageBox.Show("Заполните название источника");
+                    }
+                    else
+                    {
+                        SourceOfEmissionADO soeADO = new SourceOfEmissionADO();                       
+                        soeADO.Edit(int.Parse(lblIdProdSite.Text), tbNameSource.Text, tbCodeSource.Text);
+                        selectNode.Text = tbNameSource.Text;
+                        this.Close();
+                    }
+                }
+                
+            }
+            
         }
     }
 }

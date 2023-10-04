@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Eco.ADO;
+using Eco.Model;
 
 namespace Eco.Forms.CompanyForms
 {
     public partial class FormAddCompany : Form
     {
+        public  TreeView tree { get; set; }
         public FormAddCompany()
         {
             InitializeComponent();
+            
         }
 
         private void buttonAddCompanyDO_Click(object sender, EventArgs e)
@@ -29,12 +32,14 @@ namespace Eco.Forms.CompanyForms
                     MessageBox.Show("Введите короткое название компании!");
                 else
                 {
-                    CompanyDODADO cmdDO = new CompanyDODADO();
-                    cmdDO.Add(name,shortname);
+                    CompanyDODADO cmpnADO = new CompanyDODADO();
+                    int newCompanyId = cmpnADO.Add(name, shortname);
+                    TreeNode newNode = new TreeNode(name);
+                    newNode.Tag = newCompanyId;
+                    tree.Nodes.Add(newNode);
                     this.Close();
                 }
             }
-
 
         }
 

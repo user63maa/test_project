@@ -63,22 +63,23 @@ namespace Eco.ADO
             return obj;
         }
        
-        public void Add(string name,string shortname)
+        public int Add(string name,string shortname)
         {
             try
             {
                 connection.Open();
-                string query = "INSERT INTO CompanyDO(Name,ShortName)VALUES(@name,@shortname)";
+                string query = "INSERT INTO CompanyDO(Name,ShortName)VALUES(@name,@shortname); SELECT SCOPE_IDENTITY()";
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@name", name);
                 cmd.Parameters.AddWithValue("@shortname", shortname);
-                cmd.ExecuteNonQuery();
+                int x = Convert.ToInt32(cmd.ExecuteScalar());
                 connection.Close();
-                MessageBox.Show("Компания добавлена");
+                return x;
             }
             catch(Exception ex)
-            {
+            {                
                 MessageBox.Show("Ошибка при добавлении");
+                return 0;
             }
         }
         public void Edit(int id,string name, string shortname)
@@ -93,15 +94,13 @@ namespace Eco.ADO
                 cmd.Parameters.AddWithValue("@id", id);
                 cmd.ExecuteNonQuery();
                 connection.Close();
-
-                MessageBox.Show("Данные компании изменены");
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ошибка при изменении");
             }
         }
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             try
             {
@@ -111,11 +110,12 @@ namespace Eco.ADO
                 cmd.Parameters.AddWithValue("@id", id);
                 cmd.ExecuteNonQuery();
                 connection.Close();
-                MessageBox.Show("Компания удалена");
+                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ошибка при удалении");
+                return false;
             }
         }
 

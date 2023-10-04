@@ -33,15 +33,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EPPlus">
-      <HintPath>bin\EPPlus.dll</HintPath>
+    <Reference Include="EPPlus, Version=5.8.6.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libraries\EPPlus.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.IO.RecyclableMemoryStream">
-      <HintPath>bin\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libraries\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,6 +59,7 @@
     <Compile Include="ADO\CalculationResultADO.cs" />
     <Compile Include="ADO\CategoryFuelADO.cs" />
     <Compile Include="ADO\CompanyDODADO.cs" />
+    <Compile Include="ADO\DBWork.cs" />
     <Compile Include="ADO\ProductionSideADO.cs" />
     <Compile Include="ADO\SourceOfEmissionADO.cs" />
     <Compile Include="ADO\SourceOfEmissionFuelADO.cs" />
@@ -111,13 +115,14 @@
     <Compile Include="Model\CalculationResult.cs" />
     <Compile Include="Model\CategoryOfFuel.cs" />
     <Compile Include="Model\CompanyDO.cs" />
+    <Compile Include="Model\ExcelReportObject.cs" />
+    <Compile Include="Model\FormField.cs" />
     <Compile Include="Model\Measurement.cs" />
     <Compile Include="Model\ProductionSide.cs" />
     <Compile Include="Model\SourceOfEmission.cs" />
     <Compile Include="Model\SourceOfEmissionFuel.cs" />
     <Compile Include="Model\TypeOfFuelWithCoef.cs" />
     <Compile Include="Model\ViewTypeOfFuel.cs" />
-    <Compile Include="NewFolder1\Class1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\SourceFuelForms\FormSourceFuel.resx">
@@ -137,6 +142,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -162,7 +168,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="images\" />
-    <Folder Include="Shablons\" />
+    <Folder Include="NewFolder1\" />
+    <Folder Include="Templates\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -17,7 +17,7 @@ namespace Eco
             var measurementconditions = coefficientDB.getMeasurementConditions(measurements);
             var coeff = gases.Sum() == 0 ? (double)(coefficients.ConversionFactor1 * coefficients.EmissionFactor1) : gases.SumWithMolar() * measurementconditions.CO2Density * Math.Pow(10, -2);
             var result = (double)(coeff * usage);
-            return result;
+            return Math.Round(result, 4);
         }
 
         public double FluidFuel(int fueltype, double usage, double lowerHeat = 0)
@@ -25,7 +25,7 @@ namespace Eco
             var coefficients = coefficientDB.getObject(fueltype, "dbo.TypeOfFuel");
             var JlowerHeat = lowerHeat == 0 ? (double)coefficients.ConversionFactor2 : lowerHeat * 0.0041868;
             var result = (usage * JlowerHeat * 0.001) * (double)coefficients.EmissionFactor2;
-            return result;
+            return Math.Round(result, 4);
         }
 
         public double FlareCombustion(int fueltype, int combustionType, FlareGases gases, double usage, int measurements = 3)
@@ -35,7 +35,7 @@ namespace Eco
             var combustion = coefficientDB.getCombustionType(combustionType);
             var co2Emmishions = usage * (gases.Sum() == 0 ? coefficients.EmissionFactorCO2 : gases.SumWithMolar() * (1 - combustion.Coefficient) * measurementconditions.CO2Density * Math.Pow(10, -2));
             var ch4Emmishions = usage * (gases.Sum() == 0 ? coefficients.EmissionFactorCH4 : gases.getMethane() * combustion.Coefficient * measurementconditions.CH4Density * Math.Pow(10, -2));
-            return (double)(co2Emmishions + (ch4Emmishions * 25));
+            return Math.Round((double)(co2Emmishions + (ch4Emmishions * 25)), 4);
         }
 
         public double FugitiveEmissions(int fueltype, double usage, double ch4Share, double co2Share, int measurements = 3)
@@ -44,14 +44,14 @@ namespace Eco
             var measurementconditions = coefficientDB.getMeasurementConditions(measurements);
             var co2Emmishions = co2Share == 0 ? usage * coefficients.CO2Content * measurementconditions.CO2Density * Math.Pow(10, -2) : usage * co2Share * measurementconditions.CO2Density * Math.Pow(10, -2);
             var ch4Emmishions = ch4Share == 0 ? usage * coefficients.CH4Content * measurementconditions.CH4Density * Math.Pow(10, -2) : usage * ch4Share * measurementconditions.CH4Density * Math.Pow(10, -2);
-            return (double)(co2Emmishions + (ch4Emmishions * 25));
+            return Math.Round((double)(co2Emmishions + (ch4Emmishions * 25)), 4);
         }
 
         public double Transport(int fueltype, double tUsage, double lUsage)
         {
             var coefficients = coefficientDB.getObject(fueltype, "dbo.TypeOfFuelForTransport");
             var result = tUsage == 0 ? (coefficients.Density * lUsage * 0.001) * coefficients.EmissionFactor1 : tUsage * coefficients.EmissionFactor1;
-            return (double)result;
+            return Math.Round((double)result, 4);
         }
 
         public double IndirectWorks(int fueltype1, int fueltype2, double usage1, double usage2)
@@ -60,7 +60,7 @@ namespace Eco
             var coefficients2 = coefficientDB.getObject(fueltype2, "dbo.EnergySystem");
             var emissionFromElectricity = usage1 * coefficients1.EnergySystemCoeff1 * 0.001;
             var emissionFromHeat = usage2 * coefficients2.EnergySystemCoeff2 * 0.001;
-            return (double)(emissionFromElectricity + emissionFromHeat);
+            return Math.Round((double)(emissionFromElectricity + emissionFromHeat), 4);
         }
     }
 

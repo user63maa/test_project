@@ -31,7 +31,6 @@ namespace Eco.ADO
                 cmd.Parameters.AddWithValue("@person", person);
                 int x = Convert.ToInt32(cmd.ExecuteScalar());                
                 connection.Close();
-                MessageBox.Show("Рассчёт добавлен");
                 return x;
             }
             catch (Exception ex)
@@ -43,7 +42,8 @@ namespace Eco.ADO
         }
         public List<CalculationCompositionForm> addToListForResForm(List<CalculationCompositionForm> list, string name, string value)
         {
-            list.Add(new CalculationCompositionForm(name, value));
+            if(value!="")
+                list.Add(new CalculationCompositionForm(name, value));
             return list;
         }
         public List<CalculationCompositionForExport> addToListForResForExport(List<CalculationCompositionForExport> list, string value, int col, int row)
@@ -84,12 +84,12 @@ namespace Eco.ADO
             try
             {
                 connection.Open();
-
                 string query = "SELECT COUNT(*) FROM CalculationResult where SourceOfEmissionFuel_id=@id";
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@id", source_id);
                 int rowCount = (int)cmd.ExecuteScalar();               
                 connection.Close();
+                var x = rowCount > 0;
                 return rowCount > 0;
 
             }
@@ -101,17 +101,43 @@ namespace Eco.ADO
 
             }
         }
+        public CalculationResult getObject(int calc_id)
+        {
+            CalculationResult obj = new CalculationResult();
+            try
+            {
+                connection.Open();
+                string query = "SELECT *,CONVERT(varchar,SaveDate,104) as ShortDate FROM CalculationResult where id=@id";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@id", calc_id);
+                SqlDataReader dr = cmd.ExecuteReader();
+                dr.Read();
+                obj.id = (int)dr["id"];
+                obj.PersonnelLogin = (string)dr["PersonnelLogin"];
+                obj.SaveData = dr["SaveDate"].ToString();
+                obj.ShortDate = dr["ShortDate"].ToString();
+                obj.ResultSum = double.Parse(dr["ResultSum"].ToString());
+                dr.Close();
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка при получение объекта");
+                return null;
+            }
+            return obj;
+        }
         public int getIdResCalc(int source_id)
         {
             try
             {
                 connection.Open();
-                string query = "SELECT id FROM CalculationResult where SourceOfEmissionFuel_id=@id";
+                string query = "SELECT id FROM CalculationResult where SourceOfEmissionFuel_id=@id order by SaveDate desc";
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@id", source_id);
                 SqlDataReader dr = cmd.ExecuteReader();
                 dr.Read();
-                int resid = (int)dr["id"];
+                int resid = dr["id"] == DBNull.Value ? 0 : (int)dr["id"];
                 connection.Close();
                 return resid;
 
@@ -190,8 +216,9 @@ namespace Eco.ADO
             }
         }
 
-        public List<CalcResult> GetDataForStatistics(int id, int level)
+        public List<CalcResult> GetDataForStatistics(int id, int level, bool primary, bool indirect)
         {
+            string showAll = primary && indirect ? "" : indirect ? "and ef.CategoryOfFuel_id = 11" : "and ef.CategoryOfFuel_id != 11";
             var res = new List<CalcResult>();
             try
             {
@@ -204,11 +231,17 @@ namespace Eco.ADO
 	                                  ,ef.TypeOfFuelName
 	                                  ,cat.CategoryName
                                       ,s.Name as SourceName
-                                  FROM[Ecosystem].[dbo].[CalculationResult] res
-                                 inner join[dbo].[SourceOfEmissionFuel] ef on res.SourceOfEmissionFuel_id = ef.id
+                                  FROM [dbo].[SourceOfEmissionFuel] ef
+                                  Cross apply
+                                        (
+                                        SELECT top(1) id,[SaveDate],[ResultSum],[PersonnelLogin],SourceOfEmissionFuel_id
+                                        FROM CalculationResult c
+                                        where SourceOfEmissionFuel_id = ef.id    
+                                        order by SaveDate desc
+	                                     ) res
                                   inner join[dbo].[SourceOfEmission] s on ef.SourceOfEmission_id = s.id
                                   inner join[dbo].[CategoryOfFuel] cat on ef.CategoryOfFuel_id = cat.id
-                                  where s.id = @SourceId";
+                                  where s.id = @SourceId " + showAll;
 
                 string query2 = @"SELECT res.[ResultSum]
                                   ,res.[SaveDate]
@@ -218,12 +251,18 @@ namespace Eco.ADO
 	                              ,cat.CategoryName
 	                              ,ps.Name as SiteName, ps.AdministrativeArea, ps.Region
                                   ,s.Name as SourceName
-                              FROM [Ecosystem].[dbo].[CalculationResult] res
-                              inner join [dbo].[SourceOfEmissionFuel] ef on res.SourceOfEmissionFuel_id=ef.id
+                              FROM [dbo].[SourceOfEmissionFuel] ef
+                              Cross apply
+                                        (
+                                        SELECT top(1) id,[SaveDate],[ResultSum],[PersonnelLogin],SourceOfEmissionFuel_id
+                                        FROM CalculationResult c
+                                        where SourceOfEmissionFuel_id = ef.id    
+                                        order by SaveDate desc
+	                                     ) res
                               inner join [dbo].[SourceOfEmission] s on ef.SourceOfEmission_id=s.id
                               inner join [dbo].[CategoryOfFuel] cat on ef.CategoryOfFuel_id=cat.id
                               inner join [dbo].[ProductionSite] ps on ps.id=s.ProductionSite_id
-                              where ps.id=@SourceId";
+                              where ps.id=@SourceId " + showAll;
 
                 string query1 = @"SELECT res.[ResultSum]
                                   ,res.[SaveDate]
@@ -234,13 +273,19 @@ namespace Eco.ADO
 	                              ,ps.Name as SiteName, ps.AdministrativeArea, ps.Region
 	                              ,do.Name as DOName, do.ShortName
                                   ,s.Name as SourceName
-                              FROM [Ecosystem].[dbo].[CalculationResult] res
-                              inner join [dbo].[SourceOfEmissionFuel] ef on res.SourceOfEmissionFuel_id=ef.id
+                              FROM [dbo].[SourceOfEmissionFuel] ef
+                              Cross apply
+                                        (
+                                        SELECT top(1) id,[SaveDate],[ResultSum],[PersonnelLogin],SourceOfEmissionFuel_id
+                                        FROM CalculationResult c
+                                        where SourceOfEmissionFuel_id = ef.id    
+                                        order by SaveDate desc
+	                                     ) res
                               inner join [dbo].[SourceOfEmission] s on ef.SourceOfEmission_id=s.id
                               inner join [dbo].[CategoryOfFuel] cat on ef.CategoryOfFuel_id=cat.id
                               inner join [dbo].[ProductionSite] ps on ps.id=s.ProductionSite_id
                               inner join [dbo].[CompanyDO] do on do.id=ps.CompanyDO_id
-                              where do.id=@SourceId";
+                              where do.id=@SourceId " + showAll;                                       
 
                 string query;
                 switch (level)
@@ -289,6 +334,169 @@ namespace Eco.ADO
 
             }
             return res;
+        }
+
+        public List<FormField> getDataForFields(int id)
+        {
+            connection.Open();
+
+            string sourseQuery1 = "SELECT * FROM CalculationResult where SourceOfEmissionFuel_id = @id order by SaveDate desc";
+            SqlCommand cmdSource1 = new SqlCommand(sourseQuery1, connection);
+            cmdSource1.Parameters.AddWithValue("@id", id);
+            SqlDataReader sourceReader1 = cmdSource1.ExecuteReader();
+            sourceReader1.Read();
+            int resid = (int)sourceReader1["id"];
+            sourceReader1.Close();
+
+            List<FormField> result = new List<FormField>();
+            string sourseQuery = "SELECT * FROM CalculationCompositionForm where CalculationResult_id = @id";
+            SqlCommand cmdSource = new SqlCommand(sourseQuery, connection);
+            cmdSource.Parameters.AddWithValue("@id", resid);
+            SqlDataReader sourceReader = cmdSource.ExecuteReader();
+            while (sourceReader.Read())
+            {
+                FormField form = new FormField();
+                form.Name = (string)sourceReader["ControlName"];
+                form.Value = (string)sourceReader["ControlValue"];
+                result.Add(form);
+            }
+            sourceReader.Close();
+            connection.Close();
+            return result;
+        }
+
+        public DOObjectForReport GetDataForReport(int id, int level)
+        {
+            DOObjectForReport doObj = new DOObjectForReport();
+            string table = "cdo.id";
+            switch (level)
+            {
+                case 0:
+                    table = "cdo.id";
+                    break;
+                case 1:
+                    table = "ps.id";
+                    break;
+                case 2:
+                    table = "soe.id";
+                    break;
+                case 3:
+                    table = "soef.id";
+                    break;
+                case 4:
+                    table = "cr.id";
+                    break;
+            }
+            connection.Open();
+            List<CalculationCompositionForExport> listcalcres = new List<CalculationCompositionForExport>();
+            string sourseQuery = @"SELECT cdo.id as CmpnyID
+                                    ,cdo.Name as CmpnyName
+                                    ,ps.id as PsId
+                                    ,ps.Name as PsName
+                                    ,ps.Region as PsRegion
+                                    ,ps.AdministrativeArea as PsAdmArea
+                                    ,soe.id as SoeId
+                                    ,soe.Name as SoeName
+                                    ,soe.Code as SoeCode
+                                    ,soef.Id as SoefId
+                                    ,soef.TypeOfFuelName as SoefFuelName
+                                    ,cr.id as CrId
+                                    ,cr.ResultSum as CrRes
+                                    ,ccf.id as CcfId
+                                    ,ccf.ControlName as CcfName
+                                    ,ccf.ControlValue as CcfValue
+                                    ,soef.CategoryOfFuel_id as CategoryId
+                                    FROM CompanyDO cdo
+                                    JOIN ProductionSite ps ON cdo.id = ps.CompanyDO_id
+                                    JOIN SourceOfEmission soe ON soe.ProductionSite_id = ps.id
+                                    JOIN SourceOfEmissionFuel soef ON soef.SourceOfEmission_id = soe.id
+                                    Cross apply
+                                        (
+                                        SELECT top(1) id,ResultSum
+                                        FROM CalculationResult c
+                                        where SourceOfEmissionFuel_id = soef.id    
+                                        order by SaveDate desc
+	                                    ) cr
+                                    JOIN CalculationCompositionForm ccf ON ccf.CalculationResult_id = cr.id
+                                    where
+                                    cdo.IsDeleted = 0
+                                    AND ps.IsDeleted = 0
+                                    AND soe.IsDeleted = 0
+                                    AND soef.isDeleted = 0
+                                    AND " + table + " = @id ORDER BY cdo.id, ps.id, soe.id, soef.id, cr.id, ccf.id";
+            SqlCommand cmdSource = new SqlCommand(sourseQuery, connection);
+            cmdSource.Parameters.AddWithValue("@id", id);
+            int doId = -1;
+            int prdsiteId = -1;
+            int soeId = -1;
+            int soefId = -1;
+            int crId = -1;
+            int ccfId = -1;
+            SiteObjectForReport site = null;
+            SourceObjectForReport source = null;
+            FuelObjectForReport fuel = null;
+            CoefficientsForReport coef = null;
+            ResultObjectForReport res = null;
+
+            SqlDataReader sourceReader = cmdSource.ExecuteReader();
+            while (sourceReader.Read())
+            {
+                if (doId == -1)
+                {
+                    doObj.id = (int)sourceReader["CmpnyID"];
+                    doObj.Name = sourceReader["CmpnyName"].ToString();
+                    doId = doObj.id;
+                }
+                if((int)sourceReader["PsId"] !=prdsiteId)
+                {
+                    site = new SiteObjectForReport();
+                    site.id= (int)sourceReader["PsId"];
+                    site.Name= sourceReader["PsName"].ToString();
+                    site.Region= sourceReader["PsRegion"].ToString();
+                    site.AdministrativeArea = sourceReader["PsAdmArea"].ToString();
+                    prdsiteId = site.id;
+                    doObj.Sites.Add(site);
+                }
+                if ((int)sourceReader["SoeId"] != soeId)
+                {
+                    source = new SourceObjectForReport();
+                    source.id = (int)sourceReader["SoeId"];
+                    source.Name = sourceReader["SoeName"].ToString();
+                    source.Code = sourceReader["SoeCode"].ToString();
+                    soeId = source.id;
+                    site.Sources.Add(source);
+                    
+                }
+                if ((int)sourceReader["SoefId"] != soefId)
+                {
+                    fuel = new FuelObjectForReport();
+                    fuel.id = (int)sourceReader["SoefId"];
+                    fuel.FuelName = sourceReader["SoefFuelName"].ToString();
+                    fuel.CategoryId = (int)sourceReader["CategoryId"];
+                    soefId = fuel.id;
+                    source.Fuels.Add(fuel);
+                }
+                if((int)sourceReader["CrId"] != crId)
+                {
+                    res = new ResultObjectForReport();
+                    res.id = (int)sourceReader["CrId"];                   
+                    res.Value = double.Parse(sourceReader["CrRes"].ToString());
+                    crId = res.id;
+                    fuel.Results.Add(res);
+                }
+                if ((int)sourceReader["CcfId"] != ccfId)
+                {
+                    coef = new CoefficientsForReport();
+                    coef.id = (int)sourceReader["CcfId"];
+                    coef.Name = sourceReader["CcfName"].ToString();
+                    coef.Value = sourceReader["CcfValue"].ToString();
+                    ccfId = coef.id;
+                    res.Coefficients.Add(coef);
+                }
+            }
+            sourceReader.Close();
+            connection.Close();
+            return doObj;
         }
 
     }

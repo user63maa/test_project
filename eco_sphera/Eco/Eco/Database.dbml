@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Ecosystem" Class="DatabaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DSERVER1;Initial Catalog=Ecosystem;Integrated Security=True" SettingsObjectName="Eco.Properties.Settings" SettingsPropertyName="EcosystemConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Access" Member="Accesses">
+    <Type Name="Access">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PersonnelLogin" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Comment" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AccessRoles_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="AccessRole_Access" Member="AccessRole" ThisKey="AccessRoles_id" OtherKey="id" Type="AccessRole" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccessRoles" Member="AccessRoles">
+    <Type Name="AccessRole">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Association Name="AccessRole_Access" Member="Accesses" ThisKey="id" OtherKey="AccessRoles_id" Type="Access" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CalculationCompositionForm" Member="CalculationCompositionForms">
+    <Type Name="CalculationCompositionForm">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ControlName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ControlValue" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CalculationResult_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CalculationResult_CalculationCompositionForm" Member="CalculationResult" ThisKey="CalculationResult_id" OtherKey="id" Type="CalculationResult" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CalculationCompositionForReport" Member="CalculationCompositionForReports">
+    <Type Name="CalculationCompositionForReport">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CellValue" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="CalculationResult_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ColNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RowNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CalculationResult_CalculationCompositionForReport" Member="CalculationResult" ThisKey="CalculationResult_id" OtherKey="id" Type="CalculationResult" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CalculationResult" Member="CalculationResults">
+    <Type Name="CalculationResult">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SourceOfEmissionFuel_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ResultSum" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SaveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PersonnelLogin" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="CalculationResult_CalculationCompositionForm" Member="CalculationCompositionForms" ThisKey="id" OtherKey="CalculationResult_id" Type="CalculationCompositionForm" />
+      <Association Name="CalculationResult_CalculationCompositionForReport" Member="CalculationCompositionForReports" ThisKey="id" OtherKey="CalculationResult_id" Type="CalculationCompositionForReport" />
+      <Association Name="SourceOfEmissionFuel_CalculationResult" Member="SourceOfEmissionFuel" ThisKey="SourceOfEmissionFuel_id" OtherKey="id" Type="SourceOfEmissionFuel" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CategoryOfFuel" Member="CategoryOfFuels">
+    <Type Name="CategoryOfFuel">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CategoryName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="FuelTableName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="SumCategoryName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Association Name="CategoryOfFuel_SourceOfEmissionFuel" Member="SourceOfEmissionFuels" ThisKey="id" OtherKey="CategoryOfFuel_id" Type="SourceOfEmissionFuel" />
+      <Association Name="CategoryOfFuel_TypesForCategoryFuel" Member="TypesForCategoryFuels" ThisKey="id" OtherKey="CategoryOfFuel_id" Type="TypesForCategoryFuel" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CategoryOfFuelColumnsDictionary" Member="CategoryOfFuelColumnsDictionaries">
+    <Type Name="CategoryOfFuelColumnsDictionary">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Characteristic" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="isHasDefValue" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CompanyDO" Member="CompanyDOs">
+    <Type Name="CompanyDO">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="ShortName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="CompanyDO_ProductionSite" Member="ProductionSites" ThisKey="id" OtherKey="CompanyDO_id" Type="ProductionSite" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EnergySystem" Member="EnergySystems">
+    <Type Name="EnergySystem">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Coef1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Coef2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FlareCondition" Member="FlareConditions">
+    <Type Name="FlareCondition">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ConditionName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="CoefficientUnderburning" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FlareMeasurementCondition" Member="FlareMeasurementConditions">
+    <Type Name="FlareMeasurementCondition">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Condition" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="DencityCO2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DencityCH4" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GroupOfFuel" Member="GroupOfFuels">
+    <Type Name="GroupOfFuel">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GroupName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProductionSite" Member="ProductionSites">
+    <Type Name="ProductionSite">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CompanyDO_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="DateAdd" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AdministrativeArea" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Region" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Association Name="ProductionSite_SourceOfEmission" Member="SourceOfEmissions" ThisKey="id" OtherKey="ProductionSite_id" Type="SourceOfEmission" />
+      <Association Name="CompanyDO_ProductionSite" Member="CompanyDO" ThisKey="CompanyDO_id" OtherKey="id" Type="CompanyDO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SourceOfEmission" Member="SourceOfEmissions">
+    <Type Name="SourceOfEmission">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductionSite_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="DateAdd" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="SourceOfEmission_SourceOfEmissionFuel" Member="SourceOfEmissionFuels" ThisKey="id" OtherKey="SourceOfEmission_id" Type="SourceOfEmissionFuel" />
+      <Association Name="ProductionSite_SourceOfEmission" Member="ProductionSite" ThisKey="ProductionSite_id" OtherKey="id" Type="ProductionSite" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SourceOfEmissionFuel" Member="SourceOfEmissionFuels">
+    <Type Name="SourceOfEmissionFuel">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SourceOfEmission_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryOfFuel_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TypeOfFuelTable_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TypeOfFuelName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="isDeleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="SourceOfEmissionFuel_CalculationResult" Member="CalculationResults" ThisKey="id" OtherKey="SourceOfEmissionFuel_id" Type="CalculationResult" />
+      <Association Name="CategoryOfFuel_SourceOfEmissionFuel" Member="CategoryOfFuel" ThisKey="CategoryOfFuel_id" OtherKey="id" Type="CategoryOfFuel" IsForeignKey="true" />
+      <Association Name="SourceOfEmission_SourceOfEmissionFuel" Member="SourceOfEmission" ThisKey="SourceOfEmission_id" OtherKey="id" Type="SourceOfEmission" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TypeOfFuel" Member="TypeOfFuels">
+    <Type Name="TypeOfFuel">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Dimension" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ConversionFactor1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ConversionFactor2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="EmissionFactor1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="EmissionFactor2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CarbonContent1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CarbonContent2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="GroupOfFuel_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="TypeOfFuel_TypesForCategoryFuel" Member="TypesForCategoryFuels" ThisKey="id" OtherKey="TypeOfFuel_id" Type="TypesForCategoryFuel" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TypeOfFuelForFlareCombustion" Member="TypeOfFuelForFlareCombustions">
+    <Type Name="TypeOfFuelForFlareCombustion">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="EmissionFactorCO2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="EmissionFactorCH4" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TypeOfFuelForFugitivEmission" Member="TypeOfFuelForFugitivEmissions">
+    <Type Name="TypeOfFuelForFugitivEmission">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="CO2Content" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CH4Content" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TypeOfFuelForTransport" Member="TypeOfFuelForTransports">
+    <Type Name="TypeOfFuelForTransport">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EmissionFactor" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ConversionFactor1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ConversionFactor2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Density" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TypesForCategoryFuel" Member="TypesForCategoryFuels">
+    <Type Name="TypesForCategoryFuel">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CategoryOfFuel_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TypeOfFuel_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CategoryOfFuel_TypesForCategoryFuel" Member="CategoryOfFuel" ThisKey="CategoryOfFuel_id" OtherKey="id" Type="CategoryOfFuel" IsForeignKey="true" />
+      <Association Name="TypeOfFuel_TypesForCategoryFuel" Member="TypeOfFuel" ThisKey="TypeOfFuel_id" OtherKey="id" Type="TypeOfFuel" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
